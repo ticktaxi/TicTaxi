@@ -14,7 +14,7 @@ public class Conexao {
            return c;
        }
        catch(Exception e){
-           JOptionPane.showMessageDialog(null, "Erro ao conectar com o Banco novo novo novo novo ");
+           JOptionPane.showMessageDialog(null, "Erro ao conectar com o Banco");
            
            e.printStackTrace();
            return null;

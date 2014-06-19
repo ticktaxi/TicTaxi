@@ -192,7 +192,6 @@ Controler_Taxi taxis = new Controler_Taxi();
         }
         taxis.Excluir_taxi(Integer.parseInt(deletar));
         
-       // jLabel5.setText( ""+(jList1.getSelectedIndex()));
         ArrayList< Taxi > arraydetaxi = new ArrayList< Taxi >();
         
         arraydetaxi = taxis.Visualizar_taxi(null,0);

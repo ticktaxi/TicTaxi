@@ -1,11 +1,14 @@
 package Controle;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import Objetos.Cliente;
+import Objetos.Taxi;
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class Controler_Cliente {
 
@@ -27,9 +30,7 @@ public class Controler_Cliente {
 
     public int Cadastrar_Cliente(Cliente user) {
 
-
-
-        String str = "INSERT INTO Cliente(cod, nome, telefone, cpf, data_nascimento, email) VALUES (0,'" + user.getNome() + "',  "+ user.getTelefone() + ", " + user.getCpf() + ", '" + converteData("user.getData_nascimento()") + "', '" + user.getEmail() + "';)";
+        String str = "INSERT INTO Cliente(cod, nome, telefone, cpf, data_nascimento, email) VALUES (0,'" + user.getNome() + "',  " + user.getTelefone() + ", " + user.getCpf() + ", '" + converteData("user.getData_nascimento()") + "', '" + user.getEmail() + "';)";
         try {
             conexao = Conexao.getConexao();
             psmt = (PreparedStatement) conexao.prepareStatement(str);
@@ -41,33 +42,33 @@ public class Controler_Cliente {
         }
     }
 
-    /*public Vector Visualizar_Cliente(String pBusca, int metodo) {
-     String str;
-     Vector vet = new Vector();
+    public ArrayList<Cliente> Visualizar_Cliente(String pBusca, int metodo) {
+        String str;
+        ArrayList<Cliente> vet = new ArrayList<Cliente>();
 
-     if (metodo == 1) {
-     str = "SELECT * FROM Cliente WHERE nome =" + pBusca + ";";
-     } else if (metodo == 2) {
-     str = "SELECT * FROM Cliente WHERE cpf =" + pBusca + ";";
-     } else {
-     str = "SELECT * FROM Cliente;";
-     }
-     try {
-     conexao = Conexao.getConexao();
-     psmt = (PreparedStatement) conexao.prepareStatement(str);
-     ResultSet rs = psmt.executeQuery();
-     while (rs.next()) {
-     vet.add(new Cliente(rs.getInt("cod"),rs.getString("nome"), rs.getInt("telefone"), rs.getInt("cpf"),rs.getDate("data_nascimento"), rs.getString("email")));
-     }
-     return vet;
+        if (metodo == 1) {
+            str = "SELECT * FROM Cliente WHERE nome =" + pBusca + ";";
+        } else if (metodo == 2) {
+            str = "SELECT * FROM Cliente WHERE cpf =" + pBusca + ";";
+        } else {
+            str = "SELECT * FROM Cliente;";
+        }
+        try {
+            conexao = Conexao.getConexao();
+            psmt = (PreparedStatement) conexao.prepareStatement(str);
+            ResultSet rs = psmt.executeQuery(str);
+            while (rs.next()) {
+                vet.add(new Cliente(rs.getInt("cod"), rs.getString("nome"), rs.getInt("telefone"), rs.getInt("cpf"), rs.getDate("data_nascimento"), rs.getString("email")));
+            }
+            return vet;
 
-     } catch (SQLException excep) {
-     excep.printStackTrace();
-     return null;
-     }
-           
-        
-     }*/
+        } catch (SQLException excep) {
+            excep.printStackTrace();
+            return null;
+        }
+
+    }
+
     public void Excluir_Cliente(int pLogin) {
         String str = "DELETE * FROM Cliente WHERE cod =" + pLogin + ";";
         try {

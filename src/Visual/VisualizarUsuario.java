@@ -50,6 +50,11 @@ public class VisualizarUsuario extends javax.swing.JFrame {
         });
 
         jButton3.setText("Excluir");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Fechar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -116,8 +121,8 @@ public class VisualizarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-ArrayList< Usuario > usuarios = new ArrayList< Usuario >();
-          
+        
+        ArrayList< Usuario > usuarios = new ArrayList< Usuario >();
         usuarios = con_user.Visualizar_usuario(null,0);
         Vector t = new Vector();
         String use;
@@ -125,9 +130,7 @@ ArrayList< Usuario > usuarios = new ArrayList< Usuario >();
         for(int cont = 0;cont<usuarios.size();cont++){
             use = ""+usuarios.get(cont).getLogin()+", "+usuarios.get(cont).getCargo();
             t.add(use);
-        }
-        
-        
+        }      
         jList1.setListData(t);        
         
         
@@ -140,6 +143,26 @@ ArrayList< Usuario > usuarios = new ArrayList< Usuario >();
         user.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        String a = (String) jList1.getSelectedValue();
+        String deletar="";
+        for(int cont=0;a.charAt(cont)!=',';cont++){
+            deletar+=a.charAt(cont);
+        }
+        con_user.Excluir_usuario(deletar);
+                
+        ArrayList< Usuario > usuarios = new ArrayList< Usuario >();
+        usuarios = con_user.Visualizar_usuario(null,0);
+        Vector t = new Vector();
+        String use;
+        
+        for(int cont = 0;cont<usuarios.size();cont++){
+            use = ""+usuarios.get(cont).getLogin()+", "+usuarios.get(cont).getCargo();
+            t.add(use);
+        }      
+        jList1.setListData(t);        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

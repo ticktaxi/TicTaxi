@@ -142,7 +142,7 @@ Controler_Cliente client = new Controler_Cliente();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-String a = (String) jList1.getSelectedValue();
+        String a = (String) jList1.getSelectedValue();
         
         ArrayList< Cliente > arraydecliente = new ArrayList< Cliente >();
         

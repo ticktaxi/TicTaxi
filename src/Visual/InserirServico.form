@@ -195,7 +195,7 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value=" new JFormattedTextField(mfh); "/>
         <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="}catch(Exception e){}"/>
-        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="MaskFormatter mfh;&#xa;try{&#xa;    mfh = new MaskFormatter(&quot;##:##&quot;);  &#xa;&#xa;&#xa;"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="MaskFormatter mfh;&#xa;try{&#xa;    mfh = new MaskFormatter(&quot;##:##:##&quot;);  &#xa;&#xa;&#xa;"/>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
       </AuxValues>
     </Component>

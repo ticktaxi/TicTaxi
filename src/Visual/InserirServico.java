@@ -6,11 +6,12 @@ import Controle.Controler_Taxi;
 import Objetos.Cliente;
 import Objetos.Servico;
 import Objetos.Taxi;
+import java.sql.Time;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Vector;
-import java.sql.Time;
 import javax.swing.JFormattedTextField;
 import javax.swing.text.MaskFormatter;
 
@@ -60,7 +61,7 @@ public class InserirServico extends javax.swing.JFrame {
         jComboBox2 = new javax.swing.JComboBox();
         MaskFormatter mfh;
         try{
-            mfh = new MaskFormatter("##:##");
+            mfh = new MaskFormatter("##:##:##");
 
             jFormattedTextField2 =  new JFormattedTextField(mfh); ;
         }catch(Exception e){}
@@ -211,11 +212,14 @@ public class InserirServico extends javax.swing.JFrame {
         String a = (String) jComboBox1.getSelectedItem();
         String chaveT="";
         String chaveC="";
-        SimpleDateFormat tempo = new SimpleDateFormat("hh:mm:ss a");
-        tempo.setTimeZone(java.util.TimeZone.getTimeZone("IST"));
-        
-        java.sql.Time tempoP = null;
-        tempoP = new java.sql.Time(tempoP.parse(jFormattedTextField2.getText()));
+        DateFormat formato = new SimpleDateFormat("HH:mm:ss");
+        java.sql.Time horaS = null;
+        try {  
+            horaS = new java.sql.Time(formato.parse(jFormattedTextField2.getText()).getTime());  
+        } catch (Exception e) {  
+            throw new RuntimeException(e.getMessage());  
+        }  
+    
 
         java.util.Date dataN = null;
         try {
@@ -233,7 +237,7 @@ public class InserirServico extends javax.swing.JFrame {
         }
         
 
-        Servico serv = new Servico(0, Integer.parseInt(chaveT), datas, tempoP, Integer.parseInt(chaveC),jTextField5.getText(),jTextField6.getText(),(String)jComboBox3.getSelectedItem());
+        Servico serv = new Servico(0, Integer.parseInt(chaveT), datas, horaS, Integer.parseInt(chaveC),jTextField5.getText(),jTextField6.getText(),(String)jComboBox3.getSelectedItem());
         Serv.Cadastrar_servico(serv);
         this.dispose();  
     }//GEN-LAST:event_jButton1ActionPerformed

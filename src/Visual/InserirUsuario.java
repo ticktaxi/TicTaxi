@@ -127,12 +127,7 @@ public class InserirUsuario extends javax.swing.JFrame {
         
         Usuario user = new Usuario(jTextField1.getText(),jTextField4.getText(), (String) jComboBox1.getItemAt(jComboBox1.getSelectedIndex()));
         usuario.Cadastrar_usuario(user);
-        
-        
-        
-        
-        
-        
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

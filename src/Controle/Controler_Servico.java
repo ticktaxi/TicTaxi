@@ -1,12 +1,15 @@
 package Controle;
 
+import Objetos.Cliente;
+import Objetos.Servico;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Time;
-import Objetos.Servico;
 import java.sql.Statement;
+import java.sql.Time;
+import java.util.ArrayList;
 
 public class Controler_Servico {
 
@@ -24,9 +27,9 @@ public class Controler_Servico {
         }
     }
 
-   /* public Vector Visualizar_servico(String pBusca, int metodo) {
+    public ArrayList<Servico> Visualizar_servico(String pBusca, int metodo) {
         String str;
-        Vector vet = new Vector();
+        ArrayList<Servico> vet = new ArrayList<Servico>();
 
         if (metodo == 1) {
             str = "SELECT * FROM Servico, Taxi WHERE Servico.codT = Taxi.cod and nome_responsavel = " + pBusca + ";";
@@ -42,7 +45,7 @@ public class Controler_Servico {
         try {
             conexao = Conexao.getConexao();
             psmt = (PreparedStatement) conexao.prepareStatement(str);
-            ResultSet rs = psmt.executeQuery();
+            ResultSet rs = psmt.executeQuery(str);
             while (rs.next()) {
                 vet.add(new Servico(rs.getInt("cod"),rs.getInt("codT"), rs.getDate("data"), rs.getTime("hora"), rs.getInt("codC"), rs.getString("endereco_inicio"), rs.getString("endereco_fim"), rs.getString("status")));
             }
@@ -52,7 +55,7 @@ public class Controler_Servico {
             excep.printStackTrace();
             return null;
         }
-    }*/
+    }
 
  
     public void Editar_servico(int cod, String nome_resp, int codtaxi, Date data, Time hora, int codcliente, String edereco_inicio, String edereco_fim, String status) {

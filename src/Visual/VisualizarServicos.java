@@ -1,5 +1,14 @@
 package Visual;
 
+import Controle.Controler_Cliente;
+import Controle.Controler_Servico;
+import Controle.Controler_Taxi;
+import Objetos.Cliente;
+import Objetos.Servico;
+import Objetos.Taxi;
+import java.util.ArrayList;
+import java.util.Vector;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,10 +20,7 @@ package Visual;
  * @author Guilherme
  */
 public class VisualizarServicos extends javax.swing.JFrame {
-
-    /**
-     * Creates new form VisualizarTaxi
-     */
+    Controler_Servico serv = new Controler_Servico();
     public VisualizarServicos() {
         initComponents();
     }
@@ -33,8 +39,6 @@ public class VisualizarServicos extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -42,6 +46,8 @@ public class VisualizarServicos extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,10 +61,6 @@ public class VisualizarServicos extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
 
         jButton2.setText("Editar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -80,6 +82,13 @@ public class VisualizarServicos extends javax.swing.JFrame {
 
         jLabel4.setText("Status");
 
+        jList1.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { " " };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(jList1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -87,7 +96,7 @@ public class VisualizarServicos extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane2)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton2)
@@ -112,7 +121,7 @@ public class VisualizarServicos extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)))
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -132,8 +141,8 @@ public class VisualizarServicos extends javax.swing.JFrame {
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton3)
@@ -148,8 +157,57 @@ public class VisualizarServicos extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private String RetornaRestoString(Vector VClientes, String s){
+        String deletar="";
+        String resto="";
+        for(int i =0;i<VClientes.size();i++){
+            String a = (String) VClientes.get(i);
+            deletar="";
+            for(int cont=0;a.charAt(cont)!=',';cont++){
+                deletar+=a.charAt(cont);
+                if((Integer.parseInt(s) == Integer.parseInt(deletar))&& (a.charAt(cont+1)==',')){
+                    for(cont+=3;cont<a.length();cont++){
+                        resto+=a.charAt(cont);
+                    }
+                    return resto;  
+                }
+            }
+            
+        }
+        return "Inconcistencia no banco."; 
+    }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Controler_Cliente client = new Controler_Cliente();
+        Controler_Taxi taxis = new Controler_Taxi();
+        ArrayList< Servico > arraydeservico = new ArrayList< Servico >();
+        arraydeservico = serv.Visualizar_servico(null,0);
+        Vector t = new Vector();
+        String temp;
+        ArrayList< Cliente > arraydecliente = new ArrayList< Cliente >();
+        ArrayList< Taxi > arraydetaxi = new ArrayList< Taxi >();
         
+        arraydecliente = client.Visualizar_Cliente(null,0);
+        Vector VClientes = new Vector();
+
+        for(int cont = 0;cont<arraydecliente.size();cont++){
+            temp = ""+arraydecliente.get(cont).getCod()+", "+arraydecliente.get(cont).getNome()+", CPF: "+arraydecliente.get(cont).getCpf()+", Telefone: "+arraydecliente.get(cont).getTelefone();
+            VClientes.add(temp);
+        }
+        
+        arraydetaxi = taxis.Visualizar_taxi(null,0);
+        Vector VTaxis = new Vector();
+
+        for(int cont = 0;cont<arraydetaxi.size();cont++){
+            temp = ""+arraydetaxi.get(cont).getCod()+", Taxista: "+arraydetaxi.get(cont).getResp_taxi()+", Placa: "+arraydetaxi.get(cont).getPlaca()+", Telefone: "+arraydetaxi.get(cont).getTelefone();
+            VTaxis.add(temp);
+        }
+        
+        for(int cont = 0;cont<arraydeservico.size();cont++){
+            
+            temp = ""+arraydeservico.get(cont).getCod()+", Cliente: "+RetornaRestoString(VClientes,""+arraydeservico.get(cont).getCodcliente())+", "+RetornaRestoString(VTaxis,""+arraydeservico.get(cont).getCodtaxi())+", Inicio: "+arraydeservico.get(cont).getEdereco_inicio()+", Fim: "+arraydeservico.get(cont).getEdereco_fim()+", "+arraydeservico.get(cont).getStatus();
+            t.add(temp);
+        }
+        jList1.setListData(t);        
         
         
         
@@ -172,8 +230,8 @@ public class VisualizarServicos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JList jList1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;

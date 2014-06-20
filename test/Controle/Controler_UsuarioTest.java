@@ -12,7 +12,7 @@ public class Controler_UsuarioTest extends TestCase {
     public void testCadastrar_usuario() {
         System.out.println("Cadastrar_usuario");
         int resp = 2;
-        Usuario u = new Usuario("Leandro4", "1092822", "Gerentes");
+        Usuario u = new Usuario("Leandro45", "10928222", "Gerentess");
         Controler_Usuario instance = new Controler_Usuario();
         resp = instance.Cadastrar_usuario(u);
         assertEquals(1, resp);
@@ -35,7 +35,7 @@ public class Controler_UsuarioTest extends TestCase {
     public void testExcluir_usuario() {
         System.out.println("Excluir_usuario");
         int resp = 2;
-        String login = "Leandro";
+        String login = "Leandro4";
         Controler_Usuario instance = new Controler_Usuario();
         resp = instance.Excluir_usuario(login);
         assertEquals(1, resp);

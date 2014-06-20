@@ -59,14 +59,16 @@ public class Controler_Taxi {
 
     }
 
-    public void Excluir_taxi(int pDado) {
+    public int Excluir_taxi(int pDado) {
         String str = "DELETE FROM Taxi WHERE cod = "+pDado+";";
         try {
             conexao = Conexao.getConexao();
             psmt = (PreparedStatement) conexao.prepareStatement(str);
             psmt.executeUpdate(str);
+            return 1;
         } catch (SQLException excep) {
             excep.printStackTrace();
+            return 0;
         }
     }
     

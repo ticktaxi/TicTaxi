@@ -30,7 +30,7 @@ public class Controler_Cliente {
 
     public int Cadastrar_Cliente(Cliente user) {
 
-        String str = "INSERT INTO Cliente(cod, nome, telefone, cpf, data_nascimento, email) VALUES (0,'" + user.getNome() + "',  " + user.getTelefone() + ", " + user.getCpf() + ", '" + converteData("user.getData_nascimento()") + "', '" + user.getEmail() + "';)";
+        String str = "INSERT INTO Cliente(cod, nome, telefone, cpf, data_nascimento, email) VALUES (0,'" + user.getNome() + "',  " + user.getTelefone() + ", " + user.getCpf() + ", '" + user.getData_nascimento() + "', '" + user.getEmail() + "';)";
         try {
             conexao = Conexao.getConexao();
             psmt = (PreparedStatement) conexao.prepareStatement(str);

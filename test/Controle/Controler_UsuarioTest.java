@@ -12,7 +12,7 @@ public class Controler_UsuarioTest extends TestCase {
     public void testCadastrar_usuario() {
         System.out.println("Cadastrar_usuario");
         int resp = 2;
-        Usuario u = new Usuario("Leandro45", "10928222", "Gerentess");
+        Usuario u = new Usuario("Leandro445", "10928222", "Gerentess");
         Controler_Usuario instance = new Controler_Usuario();
         resp = instance.Cadastrar_usuario(u);
         assertEquals(1, resp);

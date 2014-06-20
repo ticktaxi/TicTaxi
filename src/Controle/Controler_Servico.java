@@ -14,7 +14,7 @@ public class Controler_Servico {
     private Statement psmt;
 
     public void Cadastrar_servico(Servico user) {
-        String str = "INSERT INTO Servico(cod, codT, data, hora, codC, endereco_inicio, endereco_fim, status) VALUES (0," + user.getCod()+ ", "+ user.getCodtaxi()+ ", '" + user.getData() +"', '" + user.getHora()+"', " + user.getCodcliente()+", '" + user.getEdereco_inicio()+"', '" + user.getEdereco_fim()+"', '" + user.getStatus()+ "');";
+        String str = "INSERT INTO Servico(cod, codT, data, hora, codC, endereco_inicio, endereco_fim, status) VALUES (0,"+ user.getCodtaxi()+ ", '" + user.getData() +"', '" + user.getHora()+"', " + user.getCodcliente()+", '" + user.getEdereco_inicio()+"', '" + user.getEdereco_fim()+"', '" + user.getStatus()+ "');";
         try {
             conexao = Conexao.getConexao();
             psmt = (PreparedStatement) conexao.prepareStatement(str);

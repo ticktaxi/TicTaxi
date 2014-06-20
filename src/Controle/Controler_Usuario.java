@@ -57,14 +57,16 @@ public class Controler_Usuario {
 
     }
 
-    public void Excluir_usuario(String pLogin) {
+    public int Excluir_usuario(String pLogin) {
         String str = "DELETE FROM Usuario WHERE login = '"+pLogin+"';";
         try {
             conexao = Conexao.getConexao();
             psmt = (PreparedStatement) conexao.prepareStatement(str);
             psmt.executeUpdate(str);
+            return 1;
         } catch (SQLException excep) {
             excep.printStackTrace();
+            return 0;
         }
 
     }

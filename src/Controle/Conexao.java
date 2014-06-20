@@ -10,7 +10,7 @@ public class Conexao {
     public static Connection getConexao(){
        try{
            Class.forName("com.mysql.jdbc.Driver");
-           Connection c = DriverManager.getConnection("jdbc:mysql://localhost/TicTaxi", "root", "" );
+           Connection c = DriverManager.getConnection("jdbc:mysql://localhost/TicTaxi", "root", "root" );
            return c;
        }
        catch(Exception e){

@@ -6,6 +6,8 @@ package Controle;
 
 import Objetos.Cliente;
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import junit.framework.TestCase;
 
@@ -20,30 +22,23 @@ public class Controler_ClienteTest extends TestCase {
     }
 
     /**
-     * Test of converteData method, of class Controler_Cliente.
-     */
-    public void DISABLE_testConverteData() {
-        System.out.println("converteData");
-        String data = "";
-        Controler_Cliente instance = new Controler_Cliente();
-        Date expResult = null;
-        Date result = instance.converteData(data);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of Cadastrar_Cliente method, of class Controler_Cliente.
      */
     public void testCadastrar_Cliente() {
         System.out.println("Cadastrar_Cliente");
-        Cliente user = new Cliente(0,"Guilherme", 92229943, 406162, , "guilherme@hotmail.com");
+               SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy");  
+        String dataNasci = "19/02/2014";
+         java.util.Date dataN = null;
+       try {  
+            dataN = data.parse(dataNasci);  
+        } catch (ParseException ex) {   
+        }
+        java.sql.Date datas = null;
+        datas = new java.sql.Date(dataN.getTime());
+        Cliente user = new Cliente(0,"Guilherme43", 92229943, 406421462, datas , "guilherme@hotmail.com");
         Controler_Cliente instance = new Controler_Cliente();
         int result = instance.Cadastrar_Cliente(user);
         assertEquals(1, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -64,13 +59,12 @@ public class Controler_ClienteTest extends TestCase {
     /**
      * Test of Excluir_Cliente method, of class Controler_Cliente.
      */
-    public void DISABLE_testExcluir_Cliente() {
+    public void testExcluir_Cliente() {
         System.out.println("Excluir_Cliente");
-        int pLogin = 0;
+        int cod = 1;
         Controler_Cliente instance = new Controler_Cliente();
-        instance.Excluir_Cliente(pLogin);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        int resp = instance.Excluir_Cliente(cod);
+        assertEquals(1, resp);
     }
 
     /**

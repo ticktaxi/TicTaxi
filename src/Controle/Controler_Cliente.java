@@ -68,14 +68,16 @@ public class Controler_Cliente {
 
     }
 
-    public void Excluir_Cliente(int pLogin) {
-        String str = "DELETE * FROM Cliente WHERE cod =" + pLogin + ";";
+    public int Excluir_Cliente(int pLogin) {
+        String str = "DELETE FROM Cliente WHERE cod = '"+pLogin+"';";
         try {
             conexao = Conexao.getConexao();
             psmt = (PreparedStatement) conexao.prepareStatement(str);
-
+            psmt.executeUpdate(str);
+            return 1;
         } catch (SQLException excep) {
             excep.printStackTrace();
+            return 0;
         }
 
     }

@@ -2,6 +2,7 @@ package Controle;
 
 import Controle.Conexao;
 import Objetos.Taxi;
+import Objetos.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,21 +29,73 @@ public class Controler_Taxi {
         }
     }
 
-   public ArrayList<Taxi> Visualizar_taxi(String pBusca, int metodo) {
-        String str;
-        
+   public ArrayList<Taxi> Visualizar_taxi(String pBusca) {
         ArrayList< Taxi > vet = new ArrayList< Taxi >();
-        if (metodo == 1) {
-            str = "SELECT * FROM Taxi WHERE nome_responsavel =" + pBusca + ";";
-        } else if (metodo == 2) {
-            str = "SELECT * FROM Taxi WHERE modelo =" + pBusca + ";";
-        } else if (metodo == 3){
-            str = "SELECT * FROM Taxi WHERE cor =" + pBusca + ";";
-        }else if (metodo == 4){
-            str = "SELECT * FROM Taxi WHERE placa =" + pBusca + ";";            
-        }else{
-            str = "SELECT * FROM Taxi;"; 
+        
+        String str, temp = "",BusZ = "";
+        int cont=0;
+        Vector z = new Vector();
+                
+        for(;pBusca.charAt(cont)!=',' && cont<pBusca.length();cont++){
+            BusZ+=pBusca.charAt(cont);
         }
+        if (BusZ.length() >0 ) {
+             temp += " nome_responsavel = '" + BusZ + "'";
+        }
+        if (temp.length() >0 ) {
+            z.add(temp);
+        }
+        temp = "";
+        BusZ = "";
+        
+        for(cont++;pBusca.charAt(cont)!=',' && cont<pBusca.length();cont++){
+            BusZ+=pBusca.charAt(cont);
+        }
+        if (BusZ.length() >0 ) {
+             temp += " cor = '" + BusZ + "'";
+        }
+        if (temp.length() >0 ) {
+            z.add(temp);
+        }
+        temp = "";
+        BusZ = "";
+        
+        for(cont++;pBusca.charAt(cont)!=',' && cont<pBusca.length();cont++){
+            BusZ+=pBusca.charAt(cont);
+        }
+        if (BusZ.length() >0 ) {
+             temp += " modelo = '" + BusZ + "'";
+        }
+        if (temp.length() >0 ) {
+            z.add(temp);
+        }
+        temp = "";
+        BusZ = "";
+        
+        for(cont++;pBusca.charAt(cont)!=',' && cont<pBusca.length();cont++){
+            BusZ+=pBusca.charAt(cont);
+        }
+        if (BusZ.length() >0 ) {
+             temp += " placa = '" + BusZ + "'";
+        }
+        if (temp.length() >0 ) {
+            z.add(temp);
+        }
+        str = "SELECT * FROM Taxi ";
+        if(z.size()>0){
+            str += "WHERE ";
+            for(int i=0;i<z.size();){
+                str += z.get(i);
+                i++;
+                if(i<z.size()){
+                    str += " and ";
+                }
+            }    
+        }
+        
+        str += ";";
+        
+        
         try {
             conexao = Conexao.getConexao();
             psmt = (PreparedStatement) conexao.prepareStatement(str);

@@ -5,11 +5,10 @@ import Objetos.Usuario;
 import java.util.ArrayList;
 import java.util.Vector;
 
-
 public class VisualizarUsuario extends javax.swing.JFrame {
+
     Controler_Usuario con_user = new Controler_Usuario();
-    
-    
+
     public VisualizarUsuario() {
         initComponents();
     }
@@ -21,13 +20,13 @@ public class VisualizarUsuario extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList();
+        jComboBox1 = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,6 +64,9 @@ public class VisualizarUsuario extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(jList1);
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Taxista", "Secretaria", "Gerente" }));
+        jComboBox1.setToolTipText("");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -86,9 +88,9 @@ public class VisualizarUsuario extends javax.swing.JFrame {
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -101,8 +103,8 @@ public class VisualizarUsuario extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(jButton1)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -121,21 +123,27 @@ public class VisualizarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        ArrayList< Usuario > usuarios = new ArrayList< Usuario >();
-        usuarios = con_user.Visualizar_usuario(null,0);
+        ArrayList< Usuario> usuarios = new ArrayList< Usuario>();
+       
+        String BuscarS;
+        BuscarS = jTextField1.getText() + ",";
+        if (jComboBox1.getSelectedItem() != " ") {
+            BuscarS += jComboBox1.getSelectedItem() + ",";
+        } else {
+            BuscarS += ",";
+        }
+
+        usuarios = con_user.Visualizar_usuario(BuscarS);
         Vector t = new Vector();
         String use;
-        
-        for(int cont = 0;cont<usuarios.size();cont++){
-            use = ""+usuarios.get(cont).getLogin()+", "+usuarios.get(cont).getCargo();
+
+        for (int cont = 0; cont < usuarios.size(); cont++) {
+            use = "" + usuarios.get(cont).getLogin() + ", " + usuarios.get(cont).getCargo();
             t.add(use);
-        }      
-        jList1.setListData(t);        
-        
-        
-        
-        
+        }
+        jList1.setListData(t);
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -146,22 +154,22 @@ public class VisualizarUsuario extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         String a = (String) jList1.getSelectedValue();
-        String deletar="";
-        for(int cont=0;a.charAt(cont)!=',';cont++){
-            deletar+=a.charAt(cont);
+        String deletar = "";
+        for (int cont = 0; a.charAt(cont) != ','; cont++) {
+            deletar += a.charAt(cont);
         }
         con_user.Excluir_usuario(deletar);
-                
-        ArrayList< Usuario > usuarios = new ArrayList< Usuario >();
-        usuarios = con_user.Visualizar_usuario(null,0);
+
+        ArrayList< Usuario> usuarios = new ArrayList< Usuario>();
+        usuarios = con_user.Visualizar_usuario(",,");
         Vector t = new Vector();
         String use;
-        
-        for(int cont = 0;cont<usuarios.size();cont++){
-            use = ""+usuarios.get(cont).getLogin()+", "+usuarios.get(cont).getCargo();
+
+        for (int cont = 0; cont < usuarios.size(); cont++) {
+            use = "" + usuarios.get(cont).getLogin() + ", " + usuarios.get(cont).getCargo();
             t.add(use);
-        }      
-        jList1.setListData(t);        
+        }
+        jList1.setListData(t);
     }//GEN-LAST:event_jButton3ActionPerformed
 
 
@@ -170,11 +178,11 @@ public class VisualizarUsuario extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JList jList1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

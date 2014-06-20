@@ -142,11 +142,11 @@ Controler_Cliente client = new Controler_Cliente();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String a = (String) jList1.getSelectedValue();
-        
+        String BuscarS;
         ArrayList< Cliente > arraydecliente = new ArrayList< Cliente >();
-        
-        arraydecliente = client.Visualizar_Cliente(null,0);
+        BuscarS = jTextField1.getText() + ",";
+        BuscarS += jTextField2.getText() + ",";
+        arraydecliente = client.Visualizar_Cliente(BuscarS);
         Vector t = new Vector();
         String temp;
         
@@ -177,7 +177,7 @@ Controler_Cliente client = new Controler_Cliente();
         
         ArrayList< Cliente > arraydecliente = new ArrayList< Cliente >();
         
-        arraydecliente = client.Visualizar_Cliente(null,0);
+        arraydecliente = client.Visualizar_Cliente(",,");
         Vector t = new Vector();
         String temp;
         

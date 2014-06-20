@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Vector;
 
 public class Controler_Cliente {
 
@@ -41,17 +42,51 @@ public class Controler_Cliente {
         }
     }
 
-    public ArrayList<Cliente> Visualizar_Cliente(String pBusca, int metodo) {
-        String str;
+    public ArrayList<Cliente> Visualizar_Cliente(String pBusca) {
         ArrayList<Cliente> vet = new ArrayList<Cliente>();
 
-        if (metodo == 1) {
-            str = "SELECT * FROM Cliente WHERE nome =" + pBusca + ";";
-        } else if (metodo == 2) {
-            str = "SELECT * FROM Cliente WHERE cpf =" + pBusca + ";";
-        } else {
-            str = "SELECT * FROM Cliente;";
+        
+        String str, temp = "",BusZ = "";
+        int cont=0;
+        Vector z = new Vector();
+                
+        for(;pBusca.charAt(cont)!=',' && cont<pBusca.length();cont++){
+            BusZ+=pBusca.charAt(cont);
         }
+        if (BusZ.length() >0 ) {
+             temp += " nome = '" + BusZ + "'";
+        }
+        if (temp.length() >0 ) {
+            z.add(temp);
+        }
+        temp = "";
+        BusZ = "";
+        
+        for(cont++;pBusca.charAt(cont)!=',' && cont<pBusca.length();cont++){
+            BusZ+=pBusca.charAt(cont);
+        }
+        if (BusZ.length() >0 ) {
+             temp += " cpf = '" + BusZ + "'";
+        }
+        if (temp.length() >0 ) {
+            z.add(temp);
+        }
+
+        str = "SELECT * FROM Cliente ";
+        if(z.size()>0){
+            str += "WHERE ";
+            for(int i=0;i<z.size();){
+                str += z.get(i);
+                i++;
+                if(i<z.size()){
+                    str += " and ";
+                }
+            }    
+        }
+        
+        str += ";";
+        
+        
         try {
             conexao = Conexao.getConexao();
             psmt = (PreparedStatement) conexao.prepareStatement(str);

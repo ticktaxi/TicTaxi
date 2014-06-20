@@ -10,7 +10,9 @@ import javax.swing.ListModel;
 import javax.swing.event.ListSelectionListener;
 
 public class VisualizarTaxi extends javax.swing.JFrame {
-Controler_Taxi taxis = new Controler_Taxi();
+
+    Controler_Taxi taxis = new Controler_Taxi();
+
     /**
      * Creates new form VisualizarTaxi
      */
@@ -158,18 +160,23 @@ Controler_Taxi taxis = new Controler_Taxi();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ArrayList< Taxi > arraydetaxi = new ArrayList< Taxi >();
-        
-        arraydetaxi = taxis.Visualizar_taxi(null,0);
+        ArrayList< Taxi> arraydetaxi = new ArrayList< Taxi>();
+        String BuscarS;
+
+        BuscarS = jTextField1.getText() + ",";
+        BuscarS += jTextField3.getText() + ",";
+        BuscarS += jTextField2.getText() + ",";
+        BuscarS += jTextField4.getText() + ",";
+
+        arraydetaxi = taxis.Visualizar_taxi(BuscarS);
         Vector t = new Vector();
         String tax;
-        
-        for(int cont = 0;cont<arraydetaxi.size();cont++){
-            tax = ""+arraydetaxi.get(cont).getCod()+", "+arraydetaxi.get(cont).getResp_taxi()+", "+arraydetaxi.get(cont).getCpf()+", "+arraydetaxi.get(cont).getTelefone()+", "+arraydetaxi.get(cont).getModelo()+", "+arraydetaxi.get(cont).getCor()+", "+arraydetaxi.get(cont).getPlaca();
+
+        for (int cont = 0; cont < arraydetaxi.size(); cont++) {
+            tax = "" + arraydetaxi.get(cont).getCod() + ", " + arraydetaxi.get(cont).getResp_taxi() + ", " + arraydetaxi.get(cont).getCpf() + ", " + arraydetaxi.get(cont).getTelefone() + ", " + arraydetaxi.get(cont).getModelo() + ", " + arraydetaxi.get(cont).getCor() + ", " + arraydetaxi.get(cont).getPlaca();
             t.add(tax);
         }
-        
-        
+
         jList1.setListData(t);
 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -186,28 +193,26 @@ Controler_Taxi taxis = new Controler_Taxi();
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         String a = (String) jList1.getSelectedValue();
-        String deletar="";
-        for(int cont=0;a.charAt(cont)!=',';cont++){
-            deletar+=a.charAt(cont);
+        String deletar = "";
+        for (int cont = 0; a.charAt(cont) != ','; cont++) {
+            deletar += a.charAt(cont);
         }
         taxis.Excluir_taxi(Integer.parseInt(deletar));
-        
-        ArrayList< Taxi > arraydetaxi = new ArrayList< Taxi >();
-        
-        arraydetaxi = taxis.Visualizar_taxi(null,0);
+
+        ArrayList< Taxi> arraydetaxi = new ArrayList< Taxi>();
+
+        arraydetaxi = taxis.Visualizar_taxi(",,,,");
         Vector t = new Vector();
         String tax;
-        
-        for(int cont = 0;cont<arraydetaxi.size();cont++){
-            tax = ""+arraydetaxi.get(cont).getCod()+", "+arraydetaxi.get(cont).getResp_taxi()+", "+arraydetaxi.get(cont).getCpf()+", "+arraydetaxi.get(cont).getTelefone()+", "+arraydetaxi.get(cont).getModelo()+", "+arraydetaxi.get(cont).getCor()+", "+arraydetaxi.get(cont).getPlaca();
+
+        for (int cont = 0; cont < arraydetaxi.size(); cont++) {
+            tax = "" + arraydetaxi.get(cont).getCod() + ", " + arraydetaxi.get(cont).getResp_taxi() + ", " + arraydetaxi.get(cont).getCpf() + ", " + arraydetaxi.get(cont).getTelefone() + ", " + arraydetaxi.get(cont).getModelo() + ", " + arraydetaxi.get(cont).getCor() + ", " + arraydetaxi.get(cont).getPlaca();
             t.add(tax);
         }
-        
-        
+
         jList1.setListData(t);
-        
-        
-        
+
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
 

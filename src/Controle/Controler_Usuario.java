@@ -29,17 +29,47 @@ public class Controler_Usuario {
         }
     }
 
-    public ArrayList< Usuario >  Visualizar_usuario(String pBusca, int metodo) {
-        String str;
+    public ArrayList< Usuario >  Visualizar_usuario(String pBusca) {
+        String str, temp = "",BusZ = "";
+        int cont;
+        Vector z = new Vector();
+        
         ArrayList< Usuario > vet = new ArrayList< Usuario >();
-
-        if (metodo == 1) {
-            str = "SELECT * FROM Usuario WHERE login =" + pBusca + ";";
-        } else if (metodo == 2) {
-            str = "SELECT * FROM Usuario WHERE cargo =" + pBusca + ";";
-        } else {
-            str = "SELECT * FROM Usuario;";
+        
+        for(cont=0;pBusca.charAt(cont)!=',' && cont<pBusca.length();cont++){
+            BusZ+=pBusca.charAt(cont);
         }
+        if (BusZ.length() >0 ) {
+             temp += " login = '" + BusZ + "'";
+        }
+        if (temp.length() >0 ) {
+            z.add(temp);
+        }
+        temp = "";
+        BusZ = "";
+        for(cont++;pBusca.charAt(cont)!=',' && cont<pBusca.length();cont++){
+            BusZ+=pBusca.charAt(cont);
+        }
+        if (BusZ.length() >0 ) {
+             temp += " cargo = '" + BusZ + "'";
+        }
+        if (temp.length() >0 ) {
+            z.add(temp);
+        }
+        str = "SELECT * FROM Usuario ";
+        if(z.size()>0){
+            str += "WHERE ";
+            for(int i=0;i<z.size();){
+                str += z.get(i);
+                i++;
+                if(i<z.size()){
+                    str += " and ";
+                }
+            }    
+        }
+        
+        str += ";";
+        
         try {
             conexao = Conexao.getConexao();
             psmt = (PreparedStatement) conexao.prepareStatement(str);

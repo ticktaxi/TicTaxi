@@ -98,7 +98,7 @@ public class InserirServico extends javax.swing.JFrame {
 
         Controler_Taxi taxis = new Controler_Taxi();
         ArrayList< Taxi > arraydetaxi = new ArrayList< Taxi >();
-        arraydetaxi = taxis.Visualizar_taxi(null,0);
+        arraydetaxi = taxis.Visualizar_taxi(",,,,");
         Vector t = new Vector();
         String tax;
 
@@ -110,7 +110,7 @@ public class InserirServico extends javax.swing.JFrame {
         Controler_Cliente client = new Controler_Cliente();
         ArrayList< Cliente > arraydecliente = new ArrayList< Cliente >();
 
-        arraydecliente = client.Visualizar_Cliente(null,0);
+        arraydecliente = client.Visualizar_Cliente(",,");
 
         String temp;
 

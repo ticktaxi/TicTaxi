@@ -180,13 +180,18 @@ public class VisualizarServicos extends javax.swing.JFrame {
         Controler_Cliente client = new Controler_Cliente();
         Controler_Taxi taxis = new Controler_Taxi();
         ArrayList< Servico > arraydeservico = new ArrayList< Servico >();
+
+        
+        
+        
         arraydeservico = serv.Visualizar_servico(null,0);
+
         Vector t = new Vector();
         String temp;
         ArrayList< Cliente > arraydecliente = new ArrayList< Cliente >();
         ArrayList< Taxi > arraydetaxi = new ArrayList< Taxi >();
         
-        arraydecliente = client.Visualizar_Cliente(null,0);
+        arraydecliente = client.Visualizar_Cliente(",,");
         Vector VClientes = new Vector();
 
         for(int cont = 0;cont<arraydecliente.size();cont++){
@@ -194,7 +199,7 @@ public class VisualizarServicos extends javax.swing.JFrame {
             VClientes.add(temp);
         }
         
-        arraydetaxi = taxis.Visualizar_taxi(null,0);
+        arraydetaxi = taxis.Visualizar_taxi(",,,,");
         Vector VTaxis = new Vector();
 
         for(int cont = 0;cont<arraydetaxi.size();cont++){

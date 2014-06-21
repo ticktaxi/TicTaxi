@@ -1,5 +1,6 @@
 package Visual;
 
+import Objetos.Cliente;
 import javax.swing.JFormattedTextField;
 import javax.swing.text.MaskFormatter;
 
@@ -18,7 +19,7 @@ public class EditarCliente extends javax.swing.JFrame {
     /**
      * Creates new form InserirCliente
      */
-    public EditarCliente() {
+    public EditarCliente(Cliente C_editar) {
         initComponents();
     }
 

@@ -175,7 +175,16 @@ public class VisualizarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        EditarUsuario user = new EditarUsuario();
+        ArrayList< Cliente> arraydecliente = new ArrayList< Cliente>();
+        String a = (String) jList1.getSelectedValue();
+        String Seditar = "";
+        for (int cont = 0; a.charAt(cont) != ','; cont++) {
+            Seditar += a.charAt(cont);
+        }
+        arraydecliente = client.Visualizar_Cliente(Seditar);
+        Cliente C_editar;
+        C_editar = arraydecliente.get(0);
+        EditarCliente user = new EditarCliente(C_editar);
         user.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed

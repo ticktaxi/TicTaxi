@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Vector;
 
 public class Controler_Servico {
 
@@ -27,21 +28,86 @@ public class Controler_Servico {
         }
     }
 
-    public ArrayList<Servico> Visualizar_servico(String pBusca, int metodo) {
-        String str;
+    public ArrayList<Servico> Visualizar_servico(String pBusca) {
         ArrayList<Servico> vet = new ArrayList<Servico>();
 
-        if (metodo == 1) {
-            str = "SELECT * FROM Servico, Taxi WHERE Servico.codT = Taxi.cod and nome_responsavel = " + pBusca + ";";
-        } else if (metodo == 2) {
-            str = "SELECT * FROM Servico, Taxi WHERE Servico.codT = Taxi.cod and placa = " + pBusca + ";";
-        } else if (metodo == 3) {
-            str = "SELECT * FROM Servico, Cliente WHERE Servico.codC = Cliente.cod and nome = " + pBusca + ";";
-        } else if (metodo == 4) {
-            str = "SELECT * FROM Servico WHERE status =" + pBusca + ";";
-        }else {
-            str = "SELECT * FROM Servico;";
+        
+        String str, temp = "",BusZ = "";
+        int cont=0;
+        Vector z = new Vector();
+        Vector y = new Vector();
+                
+        for(;pBusca.charAt(cont)!=',' && cont<pBusca.length();cont++){
+            BusZ+=pBusca.charAt(cont);
         }
+        if (BusZ.length() >0 ) {
+             temp += " Servico.codT = Taxi.cod and nome_responsavel = '" + BusZ + "'";
+        }
+        if (temp.length() >0 ) {
+            z.add(temp);
+            y.add(", Taxi");
+        }
+        temp = "";
+        BusZ = "";
+        
+        for(cont++;pBusca.charAt(cont)!=',' && cont<pBusca.length();cont++){
+            BusZ+=pBusca.charAt(cont);
+        }
+        if (BusZ.length() >0 ) {
+             temp += " Servico.codT = Taxi.cod and placa = '" + BusZ + "'";
+        }
+        if (temp.length() >0 ) {
+            z.add(temp);
+            if(y.size()<1){
+                y.add(", Taxi");
+            }
+        }
+        temp = "";
+        BusZ = "";
+        
+        for(cont++;pBusca.charAt(cont)!=',' && cont<pBusca.length();cont++){
+            BusZ+=pBusca.charAt(cont);
+        }
+        if (BusZ.length() >0 ) {
+             temp += " Servico.codC = Cliente.cod and nome = '" + BusZ + "'";
+        }
+        if (temp.length() >0 ) {
+            z.add(temp);
+            y.add(", Cliente");
+            
+        }
+        temp = "";
+        BusZ = "";
+        
+        for(cont++;pBusca.charAt(cont)!=',' && cont<pBusca.length();cont++){
+            BusZ+=pBusca.charAt(cont);
+        }
+        if (BusZ.length() >0 ) {
+             temp += " status = '" + BusZ + "'";
+        }
+        if (temp.length() >0 ) {
+            z.add(temp);
+        }
+        str = "SELECT * FROM Servico";
+        if(z.size()>0){
+            if(y.size()>0){
+                for(int i=0;i<y.size();i++){
+                    str += y.get(i);
+                }    
+            }
+            str += " WHERE ";
+            for(int i=0;i<z.size();){
+                str += z.get(i);
+                i++;
+                if(i<z.size()){
+                    str += " and ";
+                }
+            }    
+        }
+        
+        str += ";";
+                
+        
         try {
             conexao = Conexao.getConexao();
             psmt = (PreparedStatement) conexao.prepareStatement(str);
@@ -69,6 +135,20 @@ public class Controler_Servico {
         }
 
     }    
+
+    public int Excluir_Servico(int pCod) {
+     String str = "DELETE FROM Servico WHERE cod = "+pCod+";";
+        try {
+            conexao = Conexao.getConexao();
+            psmt = (PreparedStatement) conexao.prepareStatement(str);
+            psmt.executeUpdate(str);
+            return 1;
+        } catch (SQLException excep) {
+            excep.printStackTrace();
+            return 0;
+        }
+
+    }
     
 
 }

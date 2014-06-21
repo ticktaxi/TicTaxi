@@ -113,6 +113,7 @@
     <Component class="javax.swing.JButton" name="jButton3">
       <Properties>
         <Property name="text" type="java.lang.String" value="Excluir"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
@@ -139,6 +140,12 @@
               <StringArray count="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="jList1ValueChanged"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="ArrayList&lt; Cliente&gt; arraydecliente = new ArrayList&lt; Cliente&gt;();&#xa;&#xa;        arraydecliente = client.Visualizar_Cliente(&quot;,,,&quot;);&#xa;        Vector t = new Vector();&#xa;        String temp;&#xa;&#xa;        for (int cont = 0; cont &lt; arraydecliente.size(); cont++) {&#xa;            temp = &quot;&quot; + arraydecliente.get(cont).getCod() + &quot;, &quot; + arraydecliente.get(cont).getNome() + &quot;, &quot; + arraydecliente.get(cont).getCpf() + &quot;, &quot; + arraydecliente.get(cont).getTelefone() + &quot;, &quot; + arraydecliente.get(cont).getData_nascimento() + &quot;, &quot; + arraydecliente.get(cont).getEmail();&#xa;            t.add(temp);&#xa;        }&#xa;        jList1.setListData(t);"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

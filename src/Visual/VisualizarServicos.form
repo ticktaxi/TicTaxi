@@ -50,9 +50,9 @@
                       <Component id="jTextField3" min="-2" pref="217" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jTextField4" min="-2" pref="135" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jComboBox3" min="-2" pref="147" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton1" pref="183" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -75,8 +75,8 @@
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jScrollPane2" min="-2" pref="253" max="-2" attributes="0"/>
@@ -125,7 +125,11 @@
     <Component class="javax.swing.JButton" name="jButton3">
       <Properties>
         <Property name="text" type="java.lang.String" value="Excluir"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton4">
       <Properties>
@@ -147,8 +151,6 @@
         <Property name="text" type="java.lang.String" value="Status"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField4">
-    </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane2">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -164,8 +166,26 @@
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="jList1ValueChanged"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Controler_Cliente client = new Controler_Cliente();&#xa;        Controler_Taxi taxis = new Controler_Taxi();&#xa;        ArrayList&lt; Servico&gt; arraydeservico = new ArrayList&lt; Servico&gt;();&#xa;        String BuscarS;&#xa;        &#xa;        arraydeservico = serv.Visualizar_servico(&quot;,,,,,&quot;);&#xa;&#xa;        Vector t = new Vector();&#xa;        String temp;&#xa;        ArrayList&lt; Cliente&gt; arraydecliente = new ArrayList&lt; Cliente&gt;();&#xa;        ArrayList&lt; Taxi&gt; arraydetaxi = new ArrayList&lt; Taxi&gt;();&#xa;&#xa;        arraydecliente = client.Visualizar_Cliente(&quot;,,&quot;);&#xa;        Vector VClientes = new Vector();&#xa;&#xa;        for (int cont = 0; cont &lt; arraydecliente.size(); cont++) {&#xa;            temp = &quot;&quot; + arraydecliente.get(cont).getCod() + &quot;, &quot; + arraydecliente.get(cont).getNome() + &quot;, CPF: &quot; + arraydecliente.get(cont).getCpf() + &quot;, Telefone: &quot; + arraydecliente.get(cont).getTelefone();&#xa;            VClientes.add(temp);&#xa;        }&#xa;&#xa;        arraydetaxi = taxis.Visualizar_taxi(&quot;,,,,&quot;);&#xa;        Vector VTaxis = new Vector();&#xa;&#xa;        for (int cont = 0; cont &lt; arraydetaxi.size(); cont++) {&#xa;            temp = &quot;&quot; + arraydetaxi.get(cont).getCod() + &quot;, Taxista: &quot; + arraydetaxi.get(cont).getResp_taxi() + &quot;, Placa: &quot; + arraydetaxi.get(cont).getPlaca() + &quot;, Telefone: &quot; + arraydetaxi.get(cont).getTelefone();&#xa;            VTaxis.add(temp);&#xa;        }&#xa;&#xa;        for (int cont = 0; cont &lt; arraydeservico.size(); cont++) {&#xa;&#xa;            temp = &quot;&quot; + arraydeservico.get(cont).getCod() + &quot;, Cliente: &quot; + RetornaRestoString(VClientes, &quot;&quot; + arraydeservico.get(cont).getCodcliente()) + &quot;, &quot; + RetornaRestoString(VTaxis, &quot;&quot; + arraydeservico.get(cont).getCodtaxi()) + &quot;, Inicio: &quot; + arraydeservico.get(cont).getEdereco_inicio() + &quot;, Fim: &quot; + arraydeservico.get(cont).getEdereco_fim() + &quot;, &quot; + arraydeservico.get(cont).getStatus();&#xa;            t.add(temp);&#xa;        }&#xa;        jList1.setListData(t);&#xa;&#xa;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JComboBox" name="jComboBox3">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value=" "/>
+            <StringItem index="1" value="Aberto"/>
+            <StringItem index="2" value="Finalizado"/>
+            <StringItem index="3" value="Cancelado"/>
+          </StringArray>
+        </Property>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>

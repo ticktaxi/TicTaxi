@@ -108,6 +108,7 @@
     <Component class="javax.swing.JButton" name="jButton3">
       <Properties>
         <Property name="text" type="java.lang.String" value="Excluir"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
@@ -134,6 +135,12 @@
               <StringArray count="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="jList1ValueChanged"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="ArrayList&lt; Usuario&gt; usuarios = new ArrayList&lt; Usuario&gt;();&#xa;        String BuscarS;&#xa;        usuarios = con_user.Visualizar_usuario(&quot;,,,,&quot;);&#xa;        Vector t = new Vector();&#xa;        String use;&#xa;&#xa;        for (int cont = 0; cont &lt; usuarios.size(); cont++) {&#xa;            use = &quot;&quot; + usuarios.get(cont).getLogin() + &quot;, &quot; + usuarios.get(cont).getCargo();&#xa;            t.add(use);&#xa;        }&#xa;        jList1.setListData(t);&#xa;        jButton3.setEnabled(false);&#xa;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

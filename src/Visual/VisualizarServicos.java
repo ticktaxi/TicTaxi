@@ -14,13 +14,14 @@ import java.util.Vector;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Guilherme
  */
 public class VisualizarServicos extends javax.swing.JFrame {
+
     Controler_Servico serv = new Controler_Servico();
+
     public VisualizarServicos() {
         initComponents();
     }
@@ -45,9 +46,9 @@ public class VisualizarServicos extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList();
+        jComboBox3 = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,6 +71,12 @@ public class VisualizarServicos extends javax.swing.JFrame {
         });
 
         jButton3.setText("Excluir");
+        jButton3.setEnabled(false);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Fechar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -87,7 +94,49 @@ public class VisualizarServicos extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
+        Controler_Cliente client = new Controler_Cliente();
+        Controler_Taxi taxis = new Controler_Taxi();
+        ArrayList< Servico> arraydeservico = new ArrayList< Servico>();
+        String BuscarS;
+
+        arraydeservico = serv.Visualizar_servico(",,,,,");
+
+        Vector t = new Vector();
+        String temp;
+        ArrayList< Cliente> arraydecliente = new ArrayList< Cliente>();
+        ArrayList< Taxi> arraydetaxi = new ArrayList< Taxi>();
+
+        arraydecliente = client.Visualizar_Cliente(",,");
+        Vector VClientes = new Vector();
+
+        for (int cont = 0; cont < arraydecliente.size(); cont++) {
+            temp = "" + arraydecliente.get(cont).getCod() + ", " + arraydecliente.get(cont).getNome() + ", CPF: " + arraydecliente.get(cont).getCpf() + ", Telefone: " + arraydecliente.get(cont).getTelefone();
+            VClientes.add(temp);
+        }
+
+        arraydetaxi = taxis.Visualizar_taxi(",,,,");
+        Vector VTaxis = new Vector();
+
+        for (int cont = 0; cont < arraydetaxi.size(); cont++) {
+            temp = "" + arraydetaxi.get(cont).getCod() + ", Taxista: " + arraydetaxi.get(cont).getResp_taxi() + ", Placa: " + arraydetaxi.get(cont).getPlaca() + ", Telefone: " + arraydetaxi.get(cont).getTelefone();
+            VTaxis.add(temp);
+        }
+
+        for (int cont = 0; cont < arraydeservico.size(); cont++) {
+
+            temp = "" + arraydeservico.get(cont).getCod() + ", Cliente: " + RetornaRestoString(VClientes, "" + arraydeservico.get(cont).getCodcliente()) + ", " + RetornaRestoString(VTaxis, "" + arraydeservico.get(cont).getCodtaxi()) + ", Inicio: " + arraydeservico.get(cont).getEdereco_inicio() + ", Fim: " + arraydeservico.get(cont).getEdereco_fim() + ", " + arraydeservico.get(cont).getStatus();
+            t.add(temp);
+        }
+        jList1.setListData(t);
+
+        jList1.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jList1ValueChanged(evt);
+            }
+        });
         jScrollPane2.setViewportView(jList1);
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Aberto", "Finalizado", "Cancelado" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -118,9 +167,9 @@ public class VisualizarServicos extends javax.swing.JFrame {
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -138,8 +187,8 @@ public class VisualizarServicos extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(jButton1)
+                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -157,66 +206,70 @@ public class VisualizarServicos extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private String RetornaRestoString(Vector VClientes, String s){
-        String deletar="";
-        String resto="";
-        for(int i =0;i<VClientes.size();i++){
+    private String RetornaRestoString(Vector VClientes, String s) {
+        String deletar = "";
+        String resto = "";
+        for (int i = 0; i < VClientes.size(); i++) {
             String a = (String) VClientes.get(i);
-            deletar="";
-            for(int cont=0;a.charAt(cont)!=',';cont++){
-                deletar+=a.charAt(cont);
-                if((Integer.parseInt(s) == Integer.parseInt(deletar))&& (a.charAt(cont+1)==',')){
-                    for(cont+=3;cont<a.length();cont++){
-                        resto+=a.charAt(cont);
+            deletar = "";
+            for (int cont = 0; a.charAt(cont) != ','; cont++) {
+                deletar += a.charAt(cont);
+                if ((Integer.parseInt(s) == Integer.parseInt(deletar)) && (a.charAt(cont + 1) == ',')) {
+                    for (cont += 3; cont < a.length(); cont++) {
+                        resto += a.charAt(cont);
                     }
-                    return resto;  
+                    return resto;
                 }
             }
-            
+
         }
-        return "Inconcistencia no banco."; 
+        return "Inconcistencia no banco.";
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Controler_Cliente client = new Controler_Cliente();
         Controler_Taxi taxis = new Controler_Taxi();
-        ArrayList< Servico > arraydeservico = new ArrayList< Servico >();
+        ArrayList< Servico> arraydeservico = new ArrayList< Servico>();
+        String BuscarS;
+        BuscarS = jTextField1.getText() + ",";
+        BuscarS += jTextField2.getText() + ",";
+        BuscarS += jTextField3.getText() + ",";
+        if (jComboBox3.getSelectedItem() != " ") {
+            BuscarS += jComboBox3.getSelectedItem() + ",";
+        } else {
+            BuscarS += ",";
+        }
 
-        
-        
-        
-        arraydeservico = serv.Visualizar_servico(null,0);
+        arraydeservico = serv.Visualizar_servico(BuscarS);
 
         Vector t = new Vector();
         String temp;
-        ArrayList< Cliente > arraydecliente = new ArrayList< Cliente >();
-        ArrayList< Taxi > arraydetaxi = new ArrayList< Taxi >();
-        
+        ArrayList< Cliente> arraydecliente = new ArrayList< Cliente>();
+        ArrayList< Taxi> arraydetaxi = new ArrayList< Taxi>();
+
         arraydecliente = client.Visualizar_Cliente(",,");
         Vector VClientes = new Vector();
 
-        for(int cont = 0;cont<arraydecliente.size();cont++){
-            temp = ""+arraydecliente.get(cont).getCod()+", "+arraydecliente.get(cont).getNome()+", CPF: "+arraydecliente.get(cont).getCpf()+", Telefone: "+arraydecliente.get(cont).getTelefone();
+        for (int cont = 0; cont < arraydecliente.size(); cont++) {
+            temp = "" + arraydecliente.get(cont).getCod() + ", " + arraydecliente.get(cont).getNome() + ", CPF: " + arraydecliente.get(cont).getCpf() + ", Telefone: " + arraydecliente.get(cont).getTelefone();
             VClientes.add(temp);
         }
-        
+
         arraydetaxi = taxis.Visualizar_taxi(",,,,");
         Vector VTaxis = new Vector();
 
-        for(int cont = 0;cont<arraydetaxi.size();cont++){
-            temp = ""+arraydetaxi.get(cont).getCod()+", Taxista: "+arraydetaxi.get(cont).getResp_taxi()+", Placa: "+arraydetaxi.get(cont).getPlaca()+", Telefone: "+arraydetaxi.get(cont).getTelefone();
+        for (int cont = 0; cont < arraydetaxi.size(); cont++) {
+            temp = "" + arraydetaxi.get(cont).getCod() + ", Taxista: " + arraydetaxi.get(cont).getResp_taxi() + ", Placa: " + arraydetaxi.get(cont).getPlaca() + ", Telefone: " + arraydetaxi.get(cont).getTelefone();
             VTaxis.add(temp);
         }
-        
-        for(int cont = 0;cont<arraydeservico.size();cont++){
-            
-            temp = ""+arraydeservico.get(cont).getCod()+", Cliente: "+RetornaRestoString(VClientes,""+arraydeservico.get(cont).getCodcliente())+", "+RetornaRestoString(VTaxis,""+arraydeservico.get(cont).getCodtaxi())+", Inicio: "+arraydeservico.get(cont).getEdereco_inicio()+", Fim: "+arraydeservico.get(cont).getEdereco_fim()+", "+arraydeservico.get(cont).getStatus();
+
+        for (int cont = 0; cont < arraydeservico.size(); cont++) {
+
+            temp = "" + arraydeservico.get(cont).getCod() + ", Cliente: " + RetornaRestoString(VClientes, "" + arraydeservico.get(cont).getCodcliente()) + ", " + RetornaRestoString(VTaxis, "" + arraydeservico.get(cont).getCodtaxi()) + ", Inicio: " + arraydeservico.get(cont).getEdereco_inicio() + ", Fim: " + arraydeservico.get(cont).getEdereco_fim() + ", " + arraydeservico.get(cont).getStatus();
             t.add(temp);
         }
-        jList1.setListData(t);        
-        
-        
-        
-        
+        jList1.setListData(t);
+        jButton3.setEnabled(false);
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -225,12 +278,74 @@ public class VisualizarServicos extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+
+        String a = (String) jList1.getSelectedValue();
+        String deletar = "";
+        for (int cont = 0; a.charAt(cont) != ','; cont++) {
+            deletar += a.charAt(cont);
+        }
+        serv.Excluir_Servico(Integer.parseInt(deletar));
+
+        Controler_Cliente client = new Controler_Cliente();
+        Controler_Taxi taxis = new Controler_Taxi();
+        ArrayList< Servico> arraydeservico = new ArrayList< Servico>();
+        String BuscarS;
+        BuscarS = jTextField1.getText() + ",";
+        BuscarS += jTextField2.getText() + ",";
+        BuscarS += jTextField3.getText() + ",";
+        if (jComboBox3.getSelectedItem() != " ") {
+            BuscarS += jComboBox3.getSelectedItem() + ",";
+        } else {
+            BuscarS += ",";
+        }
+
+        arraydeservico = serv.Visualizar_servico(BuscarS);
+
+        Vector t = new Vector();
+        String temp;
+        ArrayList< Cliente> arraydecliente = new ArrayList< Cliente>();
+        ArrayList< Taxi> arraydetaxi = new ArrayList< Taxi>();
+
+        arraydecliente = client.Visualizar_Cliente(",,");
+        Vector VClientes = new Vector();
+
+        for (int cont = 0; cont < arraydecliente.size(); cont++) {
+            temp = "" + arraydecliente.get(cont).getCod() + ", " + arraydecliente.get(cont).getNome() + ", CPF: " + arraydecliente.get(cont).getCpf() + ", Telefone: " + arraydecliente.get(cont).getTelefone();
+            VClientes.add(temp);
+        }
+
+        arraydetaxi = taxis.Visualizar_taxi(",,,,");
+        Vector VTaxis = new Vector();
+
+        for (int cont = 0; cont < arraydetaxi.size(); cont++) {
+            temp = "" + arraydetaxi.get(cont).getCod() + ", Taxista: " + arraydetaxi.get(cont).getResp_taxi() + ", Placa: " + arraydetaxi.get(cont).getPlaca() + ", Telefone: " + arraydetaxi.get(cont).getTelefone();
+            VTaxis.add(temp);
+        }
+
+        for (int cont = 0; cont < arraydeservico.size(); cont++) {
+
+            temp = "" + arraydeservico.get(cont).getCod() + ", Cliente: " + RetornaRestoString(VClientes, "" + arraydeservico.get(cont).getCodcliente()) + ", " + RetornaRestoString(VTaxis, "" + arraydeservico.get(cont).getCodtaxi()) + ", Inicio: " + arraydeservico.get(cont).getEdereco_inicio() + ", Fim: " + arraydeservico.get(cont).getEdereco_fim() + ", " + arraydeservico.get(cont).getStatus();
+            t.add(temp);
+        }
+        jList1.setListData(t);
+        jButton3.setEnabled(false);
+
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
+        jButton3.setEnabled(true);
+
+
+    }//GEN-LAST:event_jList1ValueChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JComboBox jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -240,6 +355,5 @@ public class VisualizarServicos extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }

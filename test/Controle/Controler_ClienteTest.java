@@ -46,11 +46,10 @@ public class Controler_ClienteTest extends TestCase {
      */
     public void DISABLE_testVisualizar_Cliente() {
         System.out.println("Visualizar_Cliente");
-        String pBusca = "";
-        int metodo = 0;
+        String pBusca = ",,,,";
         Controler_Cliente instance = new Controler_Cliente();
         ArrayList expResult = null;
-        ArrayList result = instance.Visualizar_Cliente(pBusca, metodo);
+        ArrayList result = instance.Visualizar_Cliente(pBusca);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

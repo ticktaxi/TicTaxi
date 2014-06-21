@@ -11,15 +11,14 @@ import java.util.Vector;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Guilherme
  */
 public class VisualizarCliente extends javax.swing.JFrame {
-Controler_Cliente client = new Controler_Cliente();
-   
-     
+
+    Controler_Cliente client = new Controler_Cliente();
+
     public VisualizarCliente() {
         initComponents();
     }
@@ -71,6 +70,7 @@ Controler_Cliente client = new Controler_Cliente();
         });
 
         jButton3.setText("Excluir");
+        jButton3.setEnabled(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -84,6 +84,22 @@ Controler_Cliente client = new Controler_Cliente();
             }
         });
 
+        ArrayList< Cliente> arraydecliente = new ArrayList< Cliente>();
+
+        arraydecliente = client.Visualizar_Cliente(",,,");
+        Vector t = new Vector();
+        String temp;
+
+        for (int cont = 0; cont < arraydecliente.size(); cont++) {
+            temp = "" + arraydecliente.get(cont).getCod() + ", " + arraydecliente.get(cont).getNome() + ", " + arraydecliente.get(cont).getCpf() + ", " + arraydecliente.get(cont).getTelefone() + ", " + arraydecliente.get(cont).getData_nascimento() + ", " + arraydecliente.get(cont).getEmail();
+            t.add(temp);
+        }
+        jList1.setListData(t);
+        jList1.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jList1ValueChanged(evt);
+            }
+        });
         jScrollPane2.setViewportView(jList1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -142,19 +158,20 @@ Controler_Cliente client = new Controler_Cliente();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ArrayList< Cliente> arraydecliente = new ArrayList< Cliente>();
         String BuscarS;
-        ArrayList< Cliente > arraydecliente = new ArrayList< Cliente >();
         BuscarS = jTextField1.getText() + ",";
         BuscarS += jTextField2.getText() + ",";
         arraydecliente = client.Visualizar_Cliente(BuscarS);
         Vector t = new Vector();
         String temp;
-        
-        for(int cont = 0;cont<arraydecliente.size();cont++){
-            temp = ""+arraydecliente.get(cont).getCod()+", "+arraydecliente.get(cont).getNome()+", "+arraydecliente.get(cont).getCpf()+", "+arraydecliente.get(cont).getTelefone()+", "+arraydecliente.get(cont).getData_nascimento()+", "+arraydecliente.get(cont).getEmail();
+
+        for (int cont = 0; cont < arraydecliente.size(); cont++) {
+            temp = "" + arraydecliente.get(cont).getCod() + ", " + arraydecliente.get(cont).getNome() + ", " + arraydecliente.get(cont).getCpf() + ", " + arraydecliente.get(cont).getTelefone() + ", " + arraydecliente.get(cont).getData_nascimento() + ", " + arraydecliente.get(cont).getEmail();
             t.add(temp);
         }
         jList1.setListData(t);
+        jButton3.setEnabled(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -169,25 +186,29 @@ Controler_Cliente client = new Controler_Cliente();
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         String a = (String) jList1.getSelectedValue();
-        String deletar="";
-        for(int cont=0;a.charAt(cont)!=',';cont++){
-            deletar+=a.charAt(cont);
+        String deletar = "";
+        for (int cont = 0; a.charAt(cont) != ','; cont++) {
+            deletar += a.charAt(cont);
         }
         client.Excluir_Cliente(Integer.parseInt(deletar));
-        
-        ArrayList< Cliente > arraydecliente = new ArrayList< Cliente >();
-        
+
+        ArrayList< Cliente> arraydecliente = new ArrayList< Cliente>();
+
         arraydecliente = client.Visualizar_Cliente(",,");
         Vector t = new Vector();
         String temp;
-        
-        for(int cont = 0;cont<arraydecliente.size();cont++){
-            temp = ""+arraydecliente.get(cont).getCod()+", "+arraydecliente.get(cont).getNome()+", "+arraydecliente.get(cont).getCpf()+", "+arraydecliente.get(cont).getTelefone()+", "+arraydecliente.get(cont).getData_nascimento()+", "+arraydecliente.get(cont).getEmail();
+
+        for (int cont = 0; cont < arraydecliente.size(); cont++) {
+            temp = "" + arraydecliente.get(cont).getCod() + ", " + arraydecliente.get(cont).getNome() + ", " + arraydecliente.get(cont).getCpf() + ", " + arraydecliente.get(cont).getTelefone() + ", " + arraydecliente.get(cont).getData_nascimento() + ", " + arraydecliente.get(cont).getEmail();
             t.add(temp);
         }
         jList1.setListData(t);
-                
+        jButton3.setEnabled(false);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
+        jButton3.setEnabled(true);
+    }//GEN-LAST:event_jList1ValueChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

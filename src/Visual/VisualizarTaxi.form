@@ -150,6 +150,7 @@
     <Component class="javax.swing.JButton" name="jButton3">
       <Properties>
         <Property name="text" type="java.lang.String" value="Excluir"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
@@ -171,6 +172,12 @@
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
         <Component class="javax.swing.JList" name="jList1">
+          <Events>
+            <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="jList1ValueChanged"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="ArrayList&lt; Taxi&gt; arraydetaxi = new ArrayList&lt; Taxi&gt;();&#xa;        String BuscarS;&#xa;&#xa;    &#xa;        arraydetaxi = taxis.Visualizar_taxi(&quot;,,,,&quot;);&#xa;        Vector t = new Vector();&#xa;        String tax;&#xa;&#xa;        for (int cont = 0; cont &lt; arraydetaxi.size(); cont++) {&#xa;            tax = &quot;&quot; + arraydetaxi.get(cont).getCod() + &quot;, &quot; + arraydetaxi.get(cont).getResp_taxi() + &quot;, &quot; + arraydetaxi.get(cont).getCpf() + &quot;, &quot; + arraydetaxi.get(cont).getTelefone() + &quot;, &quot; + arraydetaxi.get(cont).getModelo() + &quot;, &quot; + arraydetaxi.get(cont).getCor() + &quot;, &quot; + arraydetaxi.get(cont).getPlaca();&#xa;            t.add(tax);&#xa;        }&#xa;&#xa;        jList1.setListData(t);&#xa;        jButton3.setEnabled(false);"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

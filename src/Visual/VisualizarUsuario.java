@@ -49,6 +49,7 @@ public class VisualizarUsuario extends javax.swing.JFrame {
         });
 
         jButton3.setText("Excluir");
+        jButton3.setEnabled(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -62,6 +63,23 @@ public class VisualizarUsuario extends javax.swing.JFrame {
             }
         });
 
+        ArrayList< Usuario> usuarios = new ArrayList< Usuario>();
+        String BuscarS;
+        usuarios = con_user.Visualizar_usuario(",,,,");
+        Vector t = new Vector();
+        String use;
+
+        for (int cont = 0; cont < usuarios.size(); cont++) {
+            use = "" + usuarios.get(cont).getLogin() + ", " + usuarios.get(cont).getCargo();
+            t.add(use);
+        }
+        jList1.setListData(t);
+        jButton3.setEnabled(false);
+        jList1.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jList1ValueChanged(evt);
+            }
+        });
         jScrollPane2.setViewportView(jList1);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Taxista", "Secretaria", "Gerente" }));
@@ -142,8 +160,8 @@ public class VisualizarUsuario extends javax.swing.JFrame {
             t.add(use);
         }
         jList1.setListData(t);
-
-
+        jButton3.setEnabled(false);
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -171,6 +189,11 @@ public class VisualizarUsuario extends javax.swing.JFrame {
         }
         jList1.setListData(t);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
+
+        jButton3.setEnabled(true);
+    }//GEN-LAST:event_jList1ValueChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

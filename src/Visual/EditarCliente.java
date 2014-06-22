@@ -25,8 +25,8 @@ public class EditarCliente extends javax.swing.JFrame {
         initComponents();
         this.cliente_editar = c_editar;
         jTextField1.setText(cliente_editar.getNome());
-        jTextField2.setText("" + cliente_editar.getTelefone());
-        jTextField3.setText("" + cliente_editar.getCpf());
+        jTextField2.setText("" + cliente_editar.getCpf());
+        jTextField3.setText("" + cliente_editar.getTelefone());
         jTextField5.setText(cliente_editar.getEmail());
          String result = "";
         try{
@@ -54,12 +54,22 @@ public class EditarCliente extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        MaskFormatter mf;
+        try{
+            mf = new MaskFormatter("###########");
+
+            jTextField3 =  new JFormattedTextField(mf); ;
+        }catch(Exception e){}
+
+        try{
+            mf = new MaskFormatter("########");
+
+            jTextField2 =  new JFormattedTextField(mf); ;
+        }catch(Exception e){}
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        MaskFormatter mf;
+
         try{
             mf = new MaskFormatter("##/##/####");
 
@@ -174,8 +184,8 @@ public class EditarCliente extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         cliente_editar.setNome(jTextField1.getText());
-        cliente_editar.setTelefone(Integer.parseInt(jTextField2.getText()));
-        cliente_editar.setCpf(Integer.parseInt(jTextField3.getText()));
+        cliente_editar.setTelefone(Long.parseLong(jTextField2.getText()));
+        cliente_editar.setCpf(Long.parseLong(jTextField3.getText()));
         cliente_editar.setEmail(jTextField5.getText());
         
         SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy");

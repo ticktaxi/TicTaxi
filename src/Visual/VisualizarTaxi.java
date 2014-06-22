@@ -229,7 +229,7 @@ public class VisualizarTaxi extends javax.swing.JFrame {
             }
             z.add(BusZ);
         }
-        Taxi taxi_para_edicao = new Taxi(Integer.parseInt((String)z.get(0)),(String)z.get(1),Integer.parseInt((String)z.get(2)),Integer.parseInt((String)z.get(3)),(String)z.get(4),(String)z.get(5),(String)z.get(6));
+        Taxi taxi_para_edicao = new Taxi(Long.parseLong((String)z.get(0)),(String)z.get(1),Long.parseLong((String)z.get(2)),Long.parseLong((String)z.get(3)),(String)z.get(4),(String)z.get(5),(String)z.get(6));
         
         //fim de passagem        
         
@@ -244,7 +244,7 @@ public class VisualizarTaxi extends javax.swing.JFrame {
         for (int cont = 0; a.charAt(cont) != ','; cont++) {
             deletar += a.charAt(cont);
         }
-        taxis.Excluir_taxi(Integer.parseInt(deletar));
+        taxis.Excluir_taxi(Long.parseLong(deletar));
 
         ArrayList< Taxi> arraydetaxi = new ArrayList< Taxi>();
 

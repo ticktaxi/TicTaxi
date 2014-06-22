@@ -14,16 +14,16 @@ import java.sql.Time;
  */
 public class Servico {
 
-    private int cod;
-    private int codtaxi;
+    private long cod;
+    private long codtaxi;
     private Date data;
     private Time hora;
-    private int codcliente;
+    private long codcliente;
     private String edereco_inicio;
     private String edereco_fim;
     private String status;
 
-    public Servico(int cod, int codtaxi, Date data, Time hora, int codcliente, String edereco_inicio, String edereco_fim, String status) {
+    public Servico(long cod, long codtaxi, Date data, Time hora, long codcliente, String edereco_inicio, String edereco_fim, String status) {
         this.cod = cod;
         this.codtaxi = codtaxi;
         this.data = data;
@@ -34,7 +34,7 @@ public class Servico {
         this.status = status;
     }
 
-    public int getCod() {
+    public long getCod() {
         return cod;
     }
 
@@ -42,7 +42,7 @@ public class Servico {
         this.cod = cod;
     }
     
-    public int getCodtaxi() {
+    public long getCodtaxi() {
         return codtaxi;
     }
 
@@ -66,7 +66,7 @@ public class Servico {
         this.hora = hora;
     }
 
-    public int getCodcliente() {
+    public long getCodcliente() {
         return codcliente;
     }
 

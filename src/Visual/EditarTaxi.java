@@ -2,6 +2,8 @@ package Visual;
 
 import Controle.Controler_Taxi;
 import Objetos.Taxi;
+import javax.swing.JFormattedTextField;
+import javax.swing.text.MaskFormatter;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -46,8 +48,18 @@ public class EditarTaxi extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        MaskFormatter mf;
+        try{
+            mf = new MaskFormatter("###########");
+
+            jTextField2 =  new JFormattedTextField(mf); ;
+        }catch(Exception e){}
+
+        try{
+            mf = new MaskFormatter("########");
+
+            jTextField3 =  new JFormattedTextField(mf); ;
+        }catch(Exception e){}
         jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
@@ -100,27 +112,25 @@ public class EditarTaxi extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(85, 85, 85)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(76, 76, 76)
-                        .addComponent(jTextField4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(93, 93, 93)
-                        .addComponent(jTextField5))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1))
                         .addGap(7, 7, 7)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField3))))
+                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+                            .addComponent(jTextField2)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel3))
+                        .addGap(54, 54, 54)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField3)
+                            .addComponent(jTextField6)
+                            .addComponent(jTextField4)
+                            .addComponent(jTextField5))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -168,8 +178,8 @@ public class EditarTaxi extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         taxi_pra_editar.setResp_taxi(jTextField1.getText());
-        taxi_pra_editar.setCpf(Integer.parseInt(jTextField2.getText()));
-        taxi_pra_editar.setTelefone(Integer.parseInt(jTextField3.getText()));
+        taxi_pra_editar.setCpf(Long.parseLong(jTextField2.getText()));
+        taxi_pra_editar.setTelefone(Long.parseLong(jTextField3.getText()));
         taxi_pra_editar.setModelo(jTextField4.getText());
         taxi_pra_editar.setCor(jTextField5.getText());
         taxi_pra_editar.setPlaca(jTextField6.getText());

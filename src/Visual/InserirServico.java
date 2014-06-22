@@ -237,7 +237,7 @@ public class InserirServico extends javax.swing.JFrame {
         }
         
 
-        Servico serv = new Servico(0, Integer.parseInt(chaveT), datas, horaS, Integer.parseInt(chaveC),jTextField5.getText(),jTextField6.getText(),(String)jComboBox3.getSelectedItem());
+        Servico serv = new Servico(0, Long.parseLong(chaveT), datas, horaS, Long.parseLong(chaveC),jTextField5.getText(),jTextField6.getText(),(String)jComboBox3.getSelectedItem());
         Serv.Cadastrar_servico(serv);
         this.dispose();  
     }//GEN-LAST:event_jButton1ActionPerformed

@@ -11,19 +11,19 @@ package Objetos;
  * @author guilherme
  */
 public class Taxi {
-    private int Cod;
+    private long Cod;
     private String resp_taxi;
-    private int cpf;
-    private int telefone;
+    private long cpf;
+    private long telefone;
     private String modelo;
     private String cor;
     private String placa;
 
-    public int getCod() {
+    public long getCod() {
         return Cod;
     }
 
-    public Taxi(int Cod,String resp_taxi, int cpf, int telefone, String modelo, String cor, String placa) {
+    public Taxi(long Cod,String resp_taxi, long cpf, long telefone, String modelo, String cor, String placa) {
         this.Cod=Cod;
         this.resp_taxi = resp_taxi;
         this.cpf = cpf;
@@ -43,19 +43,19 @@ public class Taxi {
         this.resp_taxi = resp_taxi;
     }
 
-    public int getCpf() {
+    public long getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(long cpf) {
         this.cpf = cpf;
     }
 
-    public int getTelefone() {
+    public long getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(long telefone) {
         this.telefone = telefone;
     }
 

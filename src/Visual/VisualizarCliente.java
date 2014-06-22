@@ -1,7 +1,9 @@
 package Visual;
 
+
 import Controle.Controler_Cliente;
 import Objetos.Cliente;
+import Visual.EditarCliente;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -227,7 +229,7 @@ public class VisualizarCliente extends javax.swing.JFrame {
             java.sql.Date datas = null;
             datas = new java.sql.Date(dataN.getTime());
             
-            Cliente Cliente_p_editar = new Cliente(Integer.parseInt((String) z.get(0)), (String) z.get(1), Integer.parseInt((String) z.get(2)), Integer.parseInt((String) z.get(3)), datas, (String) z.get(5));
+            Cliente Cliente_p_editar = new Cliente(Long.parseLong((String) z.get(0)), (String) z.get(1), Long.parseLong((String) z.get(2)), Long.parseLong((String) z.get(3)), datas, (String) z.get(5));
             
             user = new EditarCliente(Cliente_p_editar);
             
@@ -250,7 +252,7 @@ public class VisualizarCliente extends javax.swing.JFrame {
         for (int cont = 0; a.charAt(cont) != ','; cont++) {
             deletar += a.charAt(cont);
         }
-        client.Excluir_Cliente(Integer.parseInt(deletar));
+        client.Excluir_Cliente(Long.parseLong(deletar));
 
         ArrayList< Cliente> arraydecliente = new ArrayList< Cliente>();
 

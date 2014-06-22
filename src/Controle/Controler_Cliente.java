@@ -103,8 +103,8 @@ public class Controler_Cliente {
 
     }
 
-    public int Excluir_Cliente(int pCod) {
-        String str = "DELETE * FROM Cliente WHERE cod = "+pCod+";";
+    public int Excluir_Cliente(long pCod) {
+        String str = "DELETE FROM Cliente WHERE cod = "+pCod+";";
         try {
             conexao = Conexao.getConexao();
             psmt = (PreparedStatement) conexao.prepareStatement(str);

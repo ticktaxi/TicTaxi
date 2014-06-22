@@ -272,7 +272,7 @@ public class EditarServico extends javax.swing.JFrame {
             chaveC += a.charAt(cont);
         }
 
-        Servico serv = new Servico(edit_servco.getCod(), Integer.parseInt(chaveT), datas, horaS, Integer.parseInt(chaveC), jTextField5.getText(), jTextField6.getText(), (String) jComboBox3.getSelectedItem());
+        Servico serv = new Servico(edit_servco.getCod(), Long.parseLong(chaveT), datas, horaS, Long.parseLong(chaveC), jTextField5.getText(), jTextField6.getText(), (String) jComboBox3.getSelectedItem());
         Serv.Editar_servico(serv);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

@@ -215,7 +215,7 @@ public class VisualizarServicos extends javax.swing.JFrame {
             deletar = "";
             for (int cont = 0; a.charAt(cont) != ','; cont++) {
                 deletar += a.charAt(cont);
-                if ((Integer.parseInt(s) == Integer.parseInt(deletar)) && (a.charAt(cont + 1) == ',')) {
+                if ((Long.parseLong(s) == Long.parseLong(deletar)) && (a.charAt(cont + 1) == ',')) {
                     for (cont += 3; cont < a.length(); cont++) {
                         resto += a.charAt(cont);
                     }
@@ -286,7 +286,7 @@ public class VisualizarServicos extends javax.swing.JFrame {
         for (int cont = 0; a.charAt(cont) != ','; cont++) {
             deletar += a.charAt(cont);
         }
-        serv.Excluir_Servico(Integer.parseInt(deletar));
+        serv.Excluir_Servico(Long.parseLong(deletar));
 
         Controler_Cliente client = new Controler_Cliente();
         Controler_Taxi taxis = new Controler_Taxi();

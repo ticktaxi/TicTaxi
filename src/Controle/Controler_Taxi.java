@@ -112,7 +112,7 @@ public class Controler_Taxi {
 
     }
 
-    public int Excluir_taxi(int pDado) {
+    public int Excluir_taxi(long pDado) {
         String str = "DELETE FROM Taxi WHERE cod = "+pDado+";";
         try {
             conexao = Conexao.getConexao();

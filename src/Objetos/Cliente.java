@@ -13,14 +13,14 @@ import java.sql.Date;
  * @author guilherme
  */
 public class Cliente {
-    private int cod;
+    private long cod;
     private String Nome;
-    private int telefone;
-    private int cpf;
+    private long telefone;
+    private long cpf;
     private Date data_nascimento;
     private String email;    
 
-    public Cliente(int cod, String Nome, int telefone, int cpf, Date data_nascimento, String email) {
+    public Cliente(long cod, String Nome, long telefone, long cpf, Date data_nascimento, String email) {
         this.cod = cod;
         this.Nome = Nome;
         this.telefone = telefone;
@@ -29,11 +29,11 @@ public class Cliente {
         this.email = email;
     }
 
-    public int getCod() {
+    public long getCod() {
         return cod;
     }
 
-    public void setCod(int cod) {
+    public void setCod(long cod) {
         this.cod = cod;
     }
 
@@ -47,19 +47,19 @@ public class Cliente {
         this.Nome = Nome;
     }
 
-    public int getTelefone() {
+    public long getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(long telefone) {
         this.telefone = telefone;
     }
 
-    public int getCpf() {
+    public long getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(long cpf) {
         this.cpf = cpf;
     }
 

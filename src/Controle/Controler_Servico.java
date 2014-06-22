@@ -136,7 +136,7 @@ public class Controler_Servico {
 
     }    
 
-    public int Excluir_Servico(int pCod) {
+    public int Excluir_Servico(long pCod) {
      String str = "DELETE FROM Servico WHERE cod = "+pCod+";";
         try {
             conexao = Conexao.getConexao();

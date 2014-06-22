@@ -27,47 +27,9 @@ import javax.swing.text.MaskFormatter;
 public class EditarServico extends javax.swing.JFrame {
 
     Controler_Servico Serv = new Controler_Servico();
-    ArrayList< Taxi> arraydetaxi = new ArrayList< Taxi>();
-    ArrayList< Cliente> arraydecliente = new ArrayList< Cliente>();
 
-    Servico edit_servco;
-
-    public EditarServico(Servico edit_serv) {
+    public EditarServico() {
         initComponents();
-        this.edit_servco = edit_serv;
-
-        for (int cont = 0; cont < arraydetaxi.size(); cont++) {
-            if (edit_servco.getCodtaxi() == arraydetaxi.get(cont).getCod()) {
-                jComboBox1.setSelectedIndex(cont);
-                break;
-            }
-        }
-        for (int cont = 0; cont < arraydecliente.size(); cont++) {
-            if (edit_servco.getCodcliente() == arraydecliente.get(cont).getCod()) {
-                jComboBox2.setSelectedIndex(cont);
-                break;
-            }
-        }
-        this.jTextField5.setText(edit_servco.getEdereco_inicio());
-        this.jTextField6.setText(edit_servco.getEdereco_fim());
-        this.jComboBox3.setSelectedItem(edit_servco.getStatus());
-        String result = "";
-        try {
-            SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
-            SimpleDateFormat out = new SimpleDateFormat("dd/MM/yyyy");
-            result = out.format(in.parse(edit_servco.getData().toString()));
-        } catch (ParseException ex) {
-
-        }
-        jFormattedTextField1.setText(result);
-
-        DateFormat formato = new SimpleDateFormat("HH:mm:ss");
-        try {
-            result = formato.format(formato.parse(edit_servco.getHora().toString()));
-        } catch (Exception e) {
-            throw new RuntimeException(e.getMessage());
-        }
-        jFormattedTextField2.setText(result);
     }
 
     /**
@@ -135,6 +97,7 @@ public class EditarServico extends javax.swing.JFrame {
         });
 
         Controler_Taxi taxis = new Controler_Taxi();
+        ArrayList< Taxi > arraydetaxi = new ArrayList< Taxi >();
         arraydetaxi = taxis.Visualizar_taxi(",,,,");
         Vector t = new Vector();
         String tax;
@@ -145,6 +108,7 @@ public class EditarServico extends javax.swing.JFrame {
         }
 
         Controler_Cliente client = new Controler_Cliente();
+        ArrayList< Cliente > arraydecliente = new ArrayList< Cliente >();
 
         arraydecliente = client.Visualizar_Cliente(",,");
 
@@ -246,35 +210,36 @@ public class EditarServico extends javax.swing.JFrame {
         SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy");
         String dataServi = jFormattedTextField1.getText();
         String a = (String) jComboBox1.getSelectedItem();
-        String chaveT = "";
-        String chaveC = "";
+        String chaveT="";
+        String chaveC="";
         DateFormat formato = new SimpleDateFormat("HH:mm:ss");
         java.sql.Time horaS = null;
-        try {
-            horaS = new java.sql.Time(formato.parse(jFormattedTextField2.getText()).getTime());
-        } catch (Exception e) {
-            throw new RuntimeException(e.getMessage());
-        }
+        try {  
+            horaS = new java.sql.Time(formato.parse(jFormattedTextField2.getText()).getTime());  
+        } catch (Exception e) {  
+            throw new RuntimeException(e.getMessage());  
+        }  
+    
 
         java.util.Date dataN = null;
         try {
             dataN = data.parse(dataServi);
-        } catch (ParseException ex) {
-        }
+        } catch (ParseException ex) { }
         java.sql.Date datas = null;
         datas = new java.sql.Date(dataN.getTime());
-
-        for (int cont = 0; a.charAt(cont) != ','; cont++) {
-            chaveT += a.charAt(cont);
+                
+        for(int cont=0;a.charAt(cont)!=',';cont++){
+            chaveT+=a.charAt(cont);
         }
         a = (String) jComboBox2.getSelectedItem();
-        for (int cont = 0; a.charAt(cont) != ','; cont++) {
-            chaveC += a.charAt(cont);
+        for(int cont=0;a.charAt(cont)!=',';cont++){
+            chaveC+=a.charAt(cont);
         }
+        
 
-        Servico serv = new Servico(edit_servco.getCod(), Integer.parseInt(chaveT), datas, horaS, Integer.parseInt(chaveC), jTextField5.getText(), jTextField6.getText(), (String) jComboBox3.getSelectedItem());
-        Serv.Editar_servico(serv);
-        this.dispose();
+        Servico serv = new Servico(0, Integer.parseInt(chaveT), datas, horaS, Integer.parseInt(chaveC),jTextField5.getText(),jTextField6.getText(),(String)jComboBox3.getSelectedItem());
+        Serv.Cadastrar_servico(serv);
+        this.dispose();  
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

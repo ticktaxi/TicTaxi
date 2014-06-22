@@ -21,7 +21,7 @@ import java.util.Vector;
 public class VisualizarServicos extends javax.swing.JFrame {
 
     Controler_Servico serv = new Controler_Servico();
-    ArrayList< Servico> arraydeservico = new ArrayList< Servico>();
+
     public VisualizarServicos() {
         initComponents();
     }
@@ -64,7 +64,6 @@ public class VisualizarServicos extends javax.swing.JFrame {
         });
 
         jButton2.setText("Editar");
-        jButton2.setEnabled(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -97,7 +96,7 @@ public class VisualizarServicos extends javax.swing.JFrame {
         });
         Controler_Cliente client = new Controler_Cliente();
         Controler_Taxi taxis = new Controler_Taxi();
-
+        ArrayList< Servico> arraydeservico = new ArrayList< Servico>();
         String BuscarS;
 
         arraydeservico = serv.Visualizar_servico(",,,,,");
@@ -229,7 +228,7 @@ public class VisualizarServicos extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Controler_Cliente client = new Controler_Cliente();
         Controler_Taxi taxis = new Controler_Taxi();
-
+        ArrayList< Servico> arraydeservico = new ArrayList< Servico>();
         String BuscarS;
         BuscarS = jTextField1.getText() + ",";
         BuscarS += jTextField2.getText() + ",";
@@ -274,7 +273,7 @@ public class VisualizarServicos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        EditarServico user = new EditarServico(arraydeservico.get(jList1.getSelectedIndex()));
+        EditarServico user = new EditarServico();
         user.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -290,7 +289,7 @@ public class VisualizarServicos extends javax.swing.JFrame {
 
         Controler_Cliente client = new Controler_Cliente();
         Controler_Taxi taxis = new Controler_Taxi();
-        
+        ArrayList< Servico> arraydeservico = new ArrayList< Servico>();
         String BuscarS;
         BuscarS = jTextField1.getText() + ",";
         BuscarS += jTextField2.getText() + ",";
@@ -335,13 +334,8 @@ public class VisualizarServicos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
-        if (jList1.getSelectedIndex() >= 0) {
-            jButton3.setEnabled(true);
-            jButton2.setEnabled(true);
-        } else {
-            jButton3.setEnabled(false);
-            jButton2.setEnabled(false);
-        }
+        jButton3.setEnabled(true);
+
 
     }//GEN-LAST:event_jList1ValueChanged
 

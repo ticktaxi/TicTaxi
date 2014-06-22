@@ -23,7 +23,7 @@ public class Taxi {
         return Cod;
     }
 
-    public Taxi(Integer Cod,String resp_taxi, Integer cpf, Integer telefone, String modelo, String cor, String placa) {
+    public Taxi(int Cod,String resp_taxi, int cpf, int telefone, String modelo, String cor, String placa) {
         this.Cod=Cod;
         this.resp_taxi = resp_taxi;
         this.cpf = cpf;

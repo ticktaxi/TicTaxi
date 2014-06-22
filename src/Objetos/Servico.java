@@ -14,16 +14,16 @@ import java.sql.Time;
  */
 public class Servico {
 
-    private Integer cod;
-    private Integer codtaxi;
+    private int cod;
+    private int codtaxi;
     private Date data;
     private Time hora;
-    private Integer codcliente;
+    private int codcliente;
     private String edereco_inicio;
     private String edereco_fim;
     private String status;
 
-    public Servico(Integer cod, Integer codtaxi, Date data, Time hora, Integer codcliente, String edereco_inicio, String edereco_fim, String status) {
+    public Servico(int cod, int codtaxi, Date data, Time hora, int codcliente, String edereco_inicio, String edereco_fim, String status) {
         this.cod = cod;
         this.codtaxi = codtaxi;
         this.data = data;

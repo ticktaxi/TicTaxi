@@ -45,8 +45,9 @@
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="jTextField1" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Component id="jTextField2" pref="160" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="jTextField2" min="-2" pref="128" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jTextField3" min="-2" pref="171" max="-2" attributes="0"/>
@@ -75,9 +76,9 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -134,11 +135,11 @@
       <Properties>
         <Property name="name" type="java.lang.String" value="textTelefone" noResource="true"/>
       </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value=" new JFormattedTextField(mf); "/>
-        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="}catch(Exception e){}"/>
-        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="MaskFormatter mf;&#xa;try{&#xa;    mf = new MaskFormatter(&quot;###########&quot;);  "/>
-      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField2">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="textCPF" noResource="true"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField1">
       <Properties>
@@ -165,15 +166,8 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value=" new JFormattedTextField(mf); "/>
         <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="}catch(Exception e){}"/>
-        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="&#xa;try{&#xa;    mf = new MaskFormatter(&quot;##/##/####&quot;);  &#xa;&#xa;&#xa;"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="MaskFormatter mf;&#xa;try{&#xa;    mf = new MaskFormatter(&quot;##/##/####&quot;);  &#xa;&#xa;&#xa;"/>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.swing.JFormattedTextField" name="jTextField2">
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value=" new JFormattedTextField(mf); "/>
-        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="}catch(Exception e){}"/>
-        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="try{&#xa;    mf = new MaskFormatter(&quot;########&quot;);  "/>
       </AuxValues>
     </Component>
   </SubComponents>

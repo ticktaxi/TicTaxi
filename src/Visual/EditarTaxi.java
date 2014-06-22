@@ -21,12 +21,12 @@ public class EditarTaxi extends javax.swing.JFrame {
     public EditarTaxi(Taxi taxi_editar) {
         initComponents();
         this.taxi_pra_editar = taxi_editar;
-        jTextField1.setText(taxi_pra_editar.getResp_taxi());
-        jTextField2.setText("" + taxi_pra_editar.getCpf());
-        jTextField3.setText("" + taxi_pra_editar.getTelefone());
-        jTextField4.setText(taxi_pra_editar.getModelo());
-        jTextField5.setText(taxi_pra_editar.getCor());
-        jTextField6.setText(taxi_pra_editar.getPlaca());
+        jTextFieldNome.setText(taxi_pra_editar.getResp_taxi());
+        jTextFieldCPF.setText("" + taxi_pra_editar.getCpf());
+        jTextFieldTelefone.setText("" + taxi_pra_editar.getTelefone());
+        jTextFieldModelo.setText(taxi_pra_editar.getModelo());
+        jTextFieldCor.setText(taxi_pra_editar.getCor());
+        jTextFieldPlaca.setText(taxi_pra_editar.getPlaca());
 
     }
 
@@ -39,44 +39,44 @@ public class EditarTaxi extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
+        jToggleButtonEditar = new javax.swing.JToggleButton();
+        jToggleButtonCancelar = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFieldNome = new javax.swing.JTextField();
         MaskFormatter mf;
         try{
             mf = new MaskFormatter("###########");
 
-            jTextField2 =  new JFormattedTextField(mf); ;
+            jTextFieldCPF =  new JFormattedTextField(mf); ;
         }catch(Exception e){}
 
         try{
             mf = new MaskFormatter("########");
 
-            jTextField3 =  new JFormattedTextField(mf); ;
+            jTextFieldTelefone =  new JFormattedTextField(mf); ;
         }catch(Exception e){}
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        jTextFieldModelo = new javax.swing.JTextField();
+        jTextFieldCor = new javax.swing.JTextField();
+        jTextFieldPlaca = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jToggleButton1.setText("Editar");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        jToggleButtonEditar.setText("Editar");
+        jToggleButtonEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                jToggleButtonEditarActionPerformed(evt);
             }
         });
 
-        jToggleButton2.setText("Cancelar");
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+        jToggleButtonCancelar.setText("Cancelar");
+        jToggleButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton2ActionPerformed(evt);
+                jToggleButtonCancelarActionPerformed(evt);
             }
         });
 
@@ -92,17 +92,17 @@ public class EditarTaxi extends javax.swing.JFrame {
 
         jLabel6.setText("Placa");
 
-        jTextField1.setName("textNome"); // NOI18N
+        jTextFieldNome.setName("textNome"); // NOI18N
 
-        jTextField2.setName("textCPF"); // NOI18N
+        jTextFieldCPF.setName("textCPF"); // NOI18N
 
-        jTextField3.setName("textTelefone"); // NOI18N
+        jTextFieldTelefone.setName("textTelefone"); // NOI18N
 
-        jTextField4.setName("testModelo"); // NOI18N
+        jTextFieldModelo.setName("testModelo"); // NOI18N
 
-        jTextField5.setName("textCor"); // NOI18N
+        jTextFieldCor.setName("textCor"); // NOI18N
 
-        jTextField6.setName("textPlaca"); // NOI18N
+        jTextFieldPlaca.setName("textPlaca"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -117,8 +117,8 @@ public class EditarTaxi extends javax.swing.JFrame {
                             .addComponent(jLabel1))
                         .addGap(7, 7, 7)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
-                            .addComponent(jTextField2)))
+                            .addComponent(jTextFieldNome, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+                            .addComponent(jTextFieldCPF)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
@@ -127,16 +127,16 @@ public class EditarTaxi extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addGap(54, 54, 54)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField3)
-                            .addComponent(jTextField6)
-                            .addComponent(jTextField4)
-                            .addComponent(jTextField5))))
+                            .addComponent(jTextFieldTelefone)
+                            .addComponent(jTextFieldPlaca)
+                            .addComponent(jTextFieldModelo)
+                            .addComponent(jTextFieldCor))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jToggleButton2)
+                .addComponent(jToggleButtonCancelar)
                 .addGap(18, 18, 18)
-                .addComponent(jToggleButton1)
+                .addComponent(jToggleButtonEditar)
                 .addGap(13, 13, 13))
         );
         layout.setVerticalGroup(
@@ -145,54 +145,54 @@ public class EditarTaxi extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton2)
-                    .addComponent(jToggleButton1))
+                    .addComponent(jToggleButtonCancelar)
+                    .addComponent(jToggleButtonEditar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        taxi_pra_editar.setResp_taxi(jTextField1.getText());
-        taxi_pra_editar.setCpf(Long.parseLong(jTextField2.getText()));
-        taxi_pra_editar.setTelefone(Long.parseLong(jTextField3.getText()));
-        taxi_pra_editar.setModelo(jTextField4.getText());
-        taxi_pra_editar.setCor(jTextField5.getText());
-        taxi_pra_editar.setPlaca(jTextField6.getText());
+    private void jToggleButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonEditarActionPerformed
+        taxi_pra_editar.setResp_taxi(jTextFieldNome.getText());
+        taxi_pra_editar.setCpf(Long.parseLong(jTextFieldCPF.getText()));
+        taxi_pra_editar.setTelefone(Long.parseLong(jTextFieldTelefone.getText()));
+        taxi_pra_editar.setModelo(jTextFieldModelo.getText());
+        taxi_pra_editar.setCor(jTextFieldCor.getText());
+        taxi_pra_editar.setPlaca(jTextFieldPlaca.getText());
         
         
         Controler_Taxi controlertaxi = new Controler_Taxi();
         controlertaxi.Editar_taxi(taxi_pra_editar);
         this.dispose();
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    }//GEN-LAST:event_jToggleButtonEditarActionPerformed
 
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+    private void jToggleButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonCancelarActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
+    }//GEN-LAST:event_jToggleButtonCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -202,13 +202,13 @@ public class EditarTaxi extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JTextField jTextFieldCPF;
+    private javax.swing.JTextField jTextFieldCor;
+    private javax.swing.JTextField jTextFieldModelo;
+    private javax.swing.JTextField jTextFieldNome;
+    private javax.swing.JTextField jTextFieldPlaca;
+    private javax.swing.JTextField jTextFieldTelefone;
+    private javax.swing.JToggleButton jToggleButtonCancelar;
+    private javax.swing.JToggleButton jToggleButtonEditar;
     // End of variables declaration//GEN-END:variables
 }

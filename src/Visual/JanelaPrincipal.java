@@ -28,70 +28,70 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        jButtonInserirTaxi = new javax.swing.JButton();
+        jButtonVisualizarTaxi = new javax.swing.JButton();
+        jButtonViUsuario = new javax.swing.JButton();
+        jButtonInUsuario = new javax.swing.JButton();
+        jButtonViCliente = new javax.swing.JButton();
+        jButtonInCliente = new javax.swing.JButton();
+        jButtonViServico = new javax.swing.JButton();
+        jButtonInServico = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Inserir Taxi");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonInserirTaxi.setText("Inserir Taxi");
+        jButtonInserirTaxi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonInserirTaxiActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Visualizar Taxi");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonVisualizarTaxi.setText("Visualizar Taxi");
+        jButtonVisualizarTaxi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonVisualizarTaxiActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Visualizar Usuario");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButtonViUsuario.setText("Visualizar Usuario");
+        jButtonViUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButtonViUsuarioActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Inserir Usuario");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jButtonInUsuario.setText("Inserir Usuario");
+        jButtonInUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jButtonInUsuarioActionPerformed(evt);
             }
         });
 
-        jButton6.setText("Visualizar Cliente");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        jButtonViCliente.setText("Visualizar Cliente");
+        jButtonViCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                jButtonViClienteActionPerformed(evt);
             }
         });
 
-        jButton7.setText("Inserir Cliente");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        jButtonInCliente.setText("Inserir Cliente");
+        jButtonInCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                jButtonInClienteActionPerformed(evt);
             }
         });
 
-        jButton8.setText("Visualizar Serviço");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        jButtonViServico.setText("Visualizar Serviço");
+        jButtonViServico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                jButtonViServicoActionPerformed(evt);
             }
         });
 
-        jButton9.setText("Inserir Serviço");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        jButtonInServico.setText("Inserir Serviço");
+        jButtonInServico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                jButtonInServicoActionPerformed(evt);
             }
         });
 
@@ -102,20 +102,20 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButtonInserirTaxi)
+                    .addComponent(jButtonVisualizarTaxi))
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton5)
-                    .addComponent(jButton4))
+                    .addComponent(jButtonInUsuario)
+                    .addComponent(jButtonViUsuario))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton7)
-                    .addComponent(jButton6))
+                    .addComponent(jButtonInCliente)
+                    .addComponent(jButtonViCliente))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton8)
-                    .addComponent(jButton9))
+                    .addComponent(jButtonViServico)
+                    .addComponent(jButtonInServico))
                 .addContainerGap(48, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -123,64 +123,64 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton5)
-                    .addComponent(jButton7)
-                    .addComponent(jButton9))
+                    .addComponent(jButtonInserirTaxi)
+                    .addComponent(jButtonInUsuario)
+                    .addComponent(jButtonInCliente)
+                    .addComponent(jButtonInServico))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton4)
-                    .addComponent(jButton6)
-                    .addComponent(jButton8))
+                    .addComponent(jButtonVisualizarTaxi)
+                    .addComponent(jButtonViUsuario)
+                    .addComponent(jButtonViCliente)
+                    .addComponent(jButtonViServico))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonInserirTaxiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInserirTaxiActionPerformed
                InserirTaxi intaxi = new InserirTaxi();
         intaxi.setVisible(true);
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonInserirTaxiActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void jButtonInUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInUsuarioActionPerformed
         InserirUsuario user = new InserirUsuario();
         user.setVisible(true);
 
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_jButtonInUsuarioActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void jButtonInClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInClienteActionPerformed
         InserirCliente user = new InserirCliente();
         user.setVisible(true);
 
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_jButtonInClienteActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    private void jButtonInServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInServicoActionPerformed
         InserirServico user = new InserirServico();
         user.setVisible(true);
-    }//GEN-LAST:event_jButton9ActionPerformed
+    }//GEN-LAST:event_jButtonInServicoActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonVisualizarTaxiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVisualizarTaxiActionPerformed
         VisualizarTaxi vtaxi = new VisualizarTaxi();
         vtaxi.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonVisualizarTaxiActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jButtonViUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonViUsuarioActionPerformed
         VisualizarUsuario user = new VisualizarUsuario();
         user.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jButtonViUsuarioActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void jButtonViClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonViClienteActionPerformed
         VisualizarCliente user = new VisualizarCliente();
         user.setVisible(true);
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_jButtonViClienteActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void jButtonViServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonViServicoActionPerformed
         VisualizarServicos user = new VisualizarServicos();
         user.setVisible(true);
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_jButtonViServicoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -218,13 +218,13 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton jButtonInCliente;
+    private javax.swing.JButton jButtonInServico;
+    private javax.swing.JButton jButtonInUsuario;
+    private javax.swing.JButton jButtonInserirTaxi;
+    private javax.swing.JButton jButtonViCliente;
+    private javax.swing.JButton jButtonViServico;
+    private javax.swing.JButton jButtonViUsuario;
+    private javax.swing.JButton jButtonVisualizarTaxi;
     // End of variables declaration//GEN-END:variables
 }

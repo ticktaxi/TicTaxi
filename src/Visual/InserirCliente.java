@@ -43,16 +43,23 @@ public class InserirCliente extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        MaskFormatter mf;
+        try{
+            mf = new MaskFormatter("###########");
+            jTextField3 =  new JFormattedTextField(mf); ;
+        }catch(Exception e){}
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        MaskFormatter mf;
+
         try{
             mf = new MaskFormatter("##/##/####");
 
             jFormattedTextField1 =  new JFormattedTextField(mf); ;
+        }catch(Exception e){}
+        try{
+            mf = new MaskFormatter("########");
+            jTextField2 =  new JFormattedTextField(mf); ;
         }catch(Exception e){}
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -70,8 +77,6 @@ public class InserirCliente extends javax.swing.JFrame {
         jTextField5.setName("textCor"); // NOI18N
 
         jTextField3.setName("textTelefone"); // NOI18N
-
-        jTextField2.setName("textCPF"); // NOI18N
 
         jTextField1.setName("textNome"); // NOI18N
 
@@ -112,9 +117,8 @@ public class InserirCliente extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jTextField1)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
+                                .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -135,9 +139,9 @@ public class InserirCliente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -172,7 +176,7 @@ public class InserirCliente extends javax.swing.JFrame {
         java.sql.Date datas = null;
         datas = new java.sql.Date(dataN.getTime());
 
-        Cliente client = new Cliente(0, jTextField1.getText(), Integer.parseInt(jTextField2.getText()), Integer.parseInt(jTextField3.getText()), datas, jTextField5.getText());
+        Cliente client = new Cliente(0, jTextField1.getText(), Integer.parseInt(jFormattedTextField1.getText()), Integer.parseInt(jTextField3.getText()), datas, jTextField5.getText());
         con_cliente.Cadastrar_Cliente(client);
         this.dispose();
 
@@ -189,7 +193,7 @@ public class InserirCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JFormattedTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables

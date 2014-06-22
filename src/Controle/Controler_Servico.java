@@ -113,7 +113,7 @@ public class Controler_Servico {
             psmt = (PreparedStatement) conexao.prepareStatement(str);
             ResultSet rs = psmt.executeQuery(str);
             while (rs.next()) {
-                vet.add(new Servico(rs.getInt("cod"),rs.getInt("codT"), rs.getDate("data"), rs.getTime("hora"), rs.getInt("codC"), rs.getString("endereco_inicio"), rs.getString("endereco_fim"), rs.getString("status")));
+                vet.add(new Servico(rs.getLong("cod"),rs.getLong("codT"), rs.getDate("data"), rs.getTime("hora"), rs.getLong("codC"), rs.getString("endereco_inicio"), rs.getString("endereco_fim"), rs.getString("status")));
             }
             return vet;
 

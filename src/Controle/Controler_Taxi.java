@@ -101,7 +101,7 @@ public class Controler_Taxi {
             psmt = (PreparedStatement) conexao.prepareStatement(str);
             ResultSet rs = psmt.executeQuery(str);
             while (rs.next()) {
-                vet.add(new Taxi(rs.getInt("cod"),rs.getString("nome_responsavel"), rs.getInt("cpf"), rs.getInt("telefone"), rs.getString("modelo"), rs.getString("cor"), rs.getString("placa")));
+                vet.add(new Taxi(rs.getLong("cod"),rs.getString("nome_responsavel"), rs.getLong("cpf"), rs.getLong("telefone"), rs.getString("modelo"), rs.getString("cor"), rs.getString("placa")));
             }
             return vet;
 

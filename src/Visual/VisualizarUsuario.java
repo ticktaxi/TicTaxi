@@ -42,6 +42,7 @@ public class VisualizarUsuario extends javax.swing.JFrame {
         });
 
         jButton2.setText("Editar");
+        jButton2.setEnabled(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -142,7 +143,7 @@ public class VisualizarUsuario extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         ArrayList< Usuario> usuarios = new ArrayList< Usuario>();
-       
+
         String BuscarS;
         BuscarS = jTextField1.getText() + ",";
         if (jComboBox1.getSelectedItem() != " ") {
@@ -161,24 +162,37 @@ public class VisualizarUsuario extends javax.swing.JFrame {
         }
         jList1.setListData(t);
         jButton3.setEnabled(false);
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        ArrayList< Usuario> usuarios = new ArrayList< Usuario>();
-        EditarUsuario user = new EditarUsuario();
+        //passagem de parametro pra edicao
         String BuscarS;
-        
-        BuscarS = jTextField1.getText() + ",";
-        if (jComboBox1.getSelectedItem() != " ") {
-            BuscarS += jComboBox1.getSelectedItem() + ",";
-        } else {
-            BuscarS += ",";
-        }
+        BuscarS = (String) jList1.getSelectedValue() + ",";
 
-        usuarios = con_user.Visualizar_usuario(BuscarS);
-        
-        user.setVisible(true);
+        String BusZ = "";
+        int cont;
+        Vector z = new Vector();
+
+        ArrayList< Usuario> vet = new ArrayList< Usuario>();
+
+        for (cont = 0; BuscarS.charAt(cont) != ',' && cont < BuscarS.length(); cont++) {
+            BusZ += BuscarS.charAt(cont);
+        }
+        z.add(BusZ);
+
+        BusZ = "";
+        for (cont++; BuscarS.charAt(cont) != ',' && cont < BuscarS.length(); cont++) {
+            if (BuscarS.charAt(cont) != ' ') {
+                BusZ += BuscarS.charAt(cont);
+            }
+        }
+        z.add(BusZ);
+
+        //fim de passagem
+        Usuario user_para_edicao = new Usuario((String) z.get(0), "", (String) z.get(1));
+        EditarUsuario Edit_user = new EditarUsuario(user_para_edicao);
+        Edit_user.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -203,8 +217,15 @@ public class VisualizarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
+        if (jList1.getSelectedIndex() >= 0) {
+            jButton3.setEnabled(true);
+            jButton2.setEnabled(true);
+        } else {
+            jButton3.setEnabled(false);
+            jButton2.setEnabled(false);
+        }
 
-        jButton3.setEnabled(true);
+
     }//GEN-LAST:event_jList1ValueChanged
 
 

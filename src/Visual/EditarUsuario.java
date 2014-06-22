@@ -1,6 +1,8 @@
 package Visual;
 
+import Controle.Controler_Usuario;
 import Objetos.Cliente;
+import Objetos.Usuario;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,11 +15,13 @@ import Objetos.Cliente;
  * @author Guilherme
  */
 public class EditarUsuario extends javax.swing.JFrame{
-
-    public EditarUsuario() {
+        Usuario user_editar_g;
+    public EditarUsuario(Usuario user_editar) {
+        this.user_editar_g = user_editar;
         initComponents();
-       
-        
+        jTextField1.setText(user_editar.getLogin());
+
+        jComboBox1.setSelectedItem(user_editar.getCargo());
         
         
     }
@@ -33,20 +37,18 @@ public class EditarUsuario extends javax.swing.JFrame{
 
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jPasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Login");
 
         jTextField1.setName("textNome"); // NOI18N
-
-        jTextField4.setName("testModelo"); // NOI18N
 
         jLabel4.setText("Senha");
 
@@ -90,7 +92,7 @@ public class EditarUsuario extends javax.swing.JFrame{
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTextField1)
-                                    .addComponent(jTextField4)))))
+                                    .addComponent(jPasswordField1)))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton2)
@@ -108,7 +110,7 @@ public class EditarUsuario extends javax.swing.JFrame{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -128,7 +130,11 @@ public class EditarUsuario extends javax.swing.JFrame{
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        Usuario user;
+        user = new Usuario(jTextField1.getText(),new String(jPasswordField1.getPassword()),(String)jComboBox1.getSelectedItem());
+        Controler_Usuario cont_user = new Controler_Usuario();
+        cont_user.Editar_usuario(user_editar_g.getLogin(), user);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -139,7 +145,7 @@ public class EditarUsuario extends javax.swing.JFrame{
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }

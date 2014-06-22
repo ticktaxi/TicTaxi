@@ -101,12 +101,18 @@ public class Controler_Usuario {
 
     }
     
-    public void Editar_usuario(String pLogin,String pSenha,String pCargo) {
-        String str = "UPDATE * FROM Usuario WHERE login = "+pLogin+" SET login = "+pLogin+", senha = "+pSenha+", cargo = "+pCargo+";";
+    public void Editar_usuario(String pLogin,Usuario user_editar) {
+        String str;
+        if(user_editar.getSenha()==""){
+             str = "UPDATE Usuario SET login = '"+user_editar.getLogin()+"', cargo = '"+user_editar.getCargo()+"' WHERE login  = '"+pLogin+"';";
+        }else{
+             str = "UPDATE Usuario SET login = '"+user_editar.getLogin()+"', cargo = '"+user_editar.getCargo()+ "', senha = '"+user_editar.getSenha()+"' WHERE login  = '"+pLogin+"';";
+        }
+        
         try {
             conexao = Conexao.getConexao();
             psmt = (PreparedStatement) conexao.prepareStatement(str);
-
+            psmt.executeUpdate(str);
         } catch (SQLException excep) {
             excep.printStackTrace();
         }

@@ -16,25 +16,22 @@ import javax.swing.text.MaskFormatter;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Guilherme
  */
 public class InserirCliente extends javax.swing.JFrame {
+
     Controler_Cliente con_cliente = new Controler_Cliente();
-    
-    
-        
+
     public InserirCliente() {
-     
+
         initComponents();
-       
+
     }
-    
-    public void formata(){
-         
-        
+
+    public void formata() {
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -162,25 +159,23 @@ public class InserirCliente extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
-    
 
-    
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy");  
+        SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy");
         String dataNasci = jFormattedTextField1.getText();
-         java.util.Date dataN = null;
-       try {  
-            dataN = data.parse(dataNasci);  
-        } catch (ParseException ex) {   
+        java.util.Date dataN = null;
+        try {
+            dataN = data.parse(dataNasci);
+        } catch (ParseException ex) {
         }
         java.sql.Date datas = null;
         datas = new java.sql.Date(dataN.getTime());
-        
-        
-        Cliente client = new Cliente(0,jTextField1.getText(),Integer.parseInt(jTextField2.getText()),Integer.parseInt(jTextField3.getText()), datas ,jTextField5.getText());
+
+        Cliente client = new Cliente(0, jTextField1.getText(), Integer.parseInt(jTextField2.getText()), Integer.parseInt(jTextField3.getText()), datas, jTextField5.getText());
         con_cliente.Cadastrar_Cliente(client);
         this.dispose();
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

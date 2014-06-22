@@ -118,11 +118,11 @@ public class Controler_Cliente {
     }
 
     public void Editar_Cliente(Cliente user) {
-        String str = "UPDATE * FROM cliente WHERE cod = " + user.getCod() + " SET nome = " + user.getNome() + ", telefone=" + user.getTelefone() + ", cpf=" + user.getCpf() + ", data_nascimento=" + user.getData_nascimento() + ";";
+        String str = "UPDATE Cliente SET nome = '" + user.getNome() + "', telefone=" + user.getTelefone() +", email='" + user.getEmail()+ "', cpf=" + user.getCpf() + ", data_nascimento='" + user.getData_nascimento() + "' WHERE cod = "+user.getCod()+";";
         try {
             conexao = Conexao.getConexao();
             psmt = (PreparedStatement) conexao.prepareStatement(str);
-
+            psmt.executeUpdate(str);
         } catch (SQLException excep) {
             excep.printStackTrace();
         }

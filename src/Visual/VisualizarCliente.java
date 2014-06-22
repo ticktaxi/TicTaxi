@@ -2,9 +2,14 @@ package Visual;
 
 import Controle.Controler_Cliente;
 import Objetos.Cliente;
-import Objetos.Taxi;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -63,6 +68,7 @@ public class VisualizarCliente extends javax.swing.JFrame {
         });
 
         jButton2.setText("Editar");
+        jButton2.setEnabled(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -175,18 +181,63 @@ public class VisualizarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        ArrayList< Cliente> arraydecliente = new ArrayList< Cliente>();
-        String a = (String) jList1.getSelectedValue();
-        String Seditar = "";
-        for (int cont = 0; a.charAt(cont) != ','; cont++) {
-            Seditar += a.charAt(cont);
+        try {                                         
+            String BuscarS;
+            EditarCliente user;
+            BuscarS = (String) jList1.getSelectedValue() + ",";
+            
+            String BusZ = "";
+            int cont;
+            Vector z = new Vector();
+            
+            for (cont = 0; BuscarS.charAt(cont) != ',' && cont < BuscarS.length(); cont++) {
+                BusZ += BuscarS.charAt(cont);
+            }
+            z.add(BusZ);
+            for (int i = 0; i < 5; i++) {
+                BusZ = "";
+                for (cont++; BuscarS.charAt(cont) != ',' && cont < BuscarS.length(); cont++) {
+                    if (BuscarS.charAt(cont) != ' ') {
+                        BusZ += BuscarS.charAt(cont);
+                    }
+                }
+                z.add(BusZ);
+            }
+            
+            z.add(BusZ);
+            BusZ = "";
+            Vector y = new Vector();
+            cont = 0;
+            BuscarS = (String) z.get(4) + "-";
+            for (int k = 0; k < 3; k++) {
+                for (; BuscarS.charAt(cont) != '-' && cont < BuscarS.length(); cont++) {
+                    BusZ += BuscarS.charAt(cont);
+                }
+                y.add(BusZ);
+                BusZ = "";
+                cont++;
+            }
+            SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy");
+            String dataNasci = ((String) y.get(2) + "/" + (String) y.get(1) + "/" + (String) y.get(0));
+            java.util.Date dataN = null;
+            try {
+                dataN = data.parse(dataNasci);
+            } catch (ParseException ex) {
+            }
+            java.sql.Date datas = null;
+            datas = new java.sql.Date(dataN.getTime());
+            
+            Cliente Cliente_p_editar = new Cliente(Integer.parseInt((String) z.get(0)), (String) z.get(1), Integer.parseInt((String) z.get(2)), Integer.parseInt((String) z.get(3)), datas, (String) z.get(5));
+            
+            user = new EditarCliente(Cliente_p_editar);
+            
+            
+            
+            user.setVisible(true);
+            this.dispose();
+        } catch (ParseException ex) {
+            Logger.getLogger(VisualizarCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
-        arraydecliente = client.Visualizar_Cliente(Seditar);
-        Cliente C_editar;
-        C_editar = arraydecliente.get(0);
-        EditarCliente user = new EditarCliente(C_editar);
-        user.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -216,7 +267,13 @@ public class VisualizarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
-        jButton3.setEnabled(true);
+        if (jList1.getSelectedIndex() >= 0) {
+            jButton3.setEnabled(true);
+            jButton2.setEnabled(true);
+        } else {
+            jButton3.setEnabled(false);
+            jButton2.setEnabled(false);
+        }
     }//GEN-LAST:event_jList1ValueChanged
 
 

@@ -125,12 +125,14 @@ public class Controler_Taxi {
         }
     }
     
-    public void Editar_taxi(int cod, String resp_taxi, int cpf, int telefone, String modelo, String cor, String placa) {
-        String str = "UPDATE * FROM Taxi WHERE cod ="+cod+" SET nome_responsavel="+resp_taxi+",cpf="+cpf+",telefone="+telefone+",modelo="+modelo+",cor="+cor+",placa="+placa+";";
+    public void Editar_taxi(Taxi taxi_editar) {
+        
+        String str = "UPDATE Taxi SET nome_responsavel = '"+taxi_editar.getResp_taxi()+"',cpf="+taxi_editar.getCpf()+",telefone="+taxi_editar.getTelefone()+",modelo='"+taxi_editar.getModelo()+"',cor='"+taxi_editar.getCor()+"',placa='"+taxi_editar.getPlaca()+"' WHERE cod ="+taxi_editar.getCod() +";";
+        
         try {
             conexao = Conexao.getConexao();
             psmt = (PreparedStatement) conexao.prepareStatement(str);
-
+            psmt.executeUpdate(str);
         } catch (SQLException excep) {
             excep.printStackTrace();
         }

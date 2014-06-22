@@ -1,6 +1,10 @@
 package Visual;
 
+import Controle.Controler_Cliente;
 import Objetos.Cliente;
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import javax.swing.JFormattedTextField;
 import javax.swing.text.MaskFormatter;
 
@@ -9,20 +13,32 @@ import javax.swing.text.MaskFormatter;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Guilherme
  */
 public class EditarCliente extends javax.swing.JFrame {
 
-    /**
-     * Creates new form InserirCliente
-     */
-    public EditarCliente(Cliente C_editar) {
-        initComponents();
-    }
+    Cliente cliente_editar;
 
+    public EditarCliente(Cliente c_editar) throws ParseException {
+        initComponents();
+        this.cliente_editar = c_editar;
+        jTextField1.setText(cliente_editar.getNome());
+        jTextField2.setText("" + cliente_editar.getTelefone());
+        jTextField3.setText("" + cliente_editar.getCpf());
+        jTextField5.setText(cliente_editar.getEmail());
+         String result = "";
+        try{
+        SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat out = new SimpleDateFormat("dd/MM/yyyy");
+        result = out.format(in.parse(c_editar.getData_nascimento().toString()));
+        }catch(ParseException ex){
+            
+        }
+        jFormattedTextField1.setText(result);
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -71,6 +87,11 @@ public class EditarCliente extends javax.swing.JFrame {
         jTextField1.setName("textNome"); // NOI18N
 
         jButton1.setText("Editar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Cancelar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -148,13 +169,34 @@ public class EditarCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       this.dispose();
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        cliente_editar.setNome(jTextField1.getText());
+        cliente_editar.setTelefone(Integer.parseInt(jTextField2.getText()));
+        cliente_editar.setCpf(Integer.parseInt(jTextField3.getText()));
+        cliente_editar.setEmail(jTextField5.getText());
+        
+        SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy");
+        String dataNasci = jFormattedTextField1.getText();
+        java.util.Date dataN = null;
+        try {
+            dataN = data.parse(dataNasci);
+        } catch (ParseException ex) {
+        }
+        java.sql.Date datas = null;
+        datas = new java.sql.Date(dataN.getTime());
+        
+        cliente_editar.setData_nascimento(datas);
+        Controler_Cliente c_c = new Controler_Cliente();
+        c_c.Editar_Cliente(cliente_editar);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
      */
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

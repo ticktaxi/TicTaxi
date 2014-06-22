@@ -1,26 +1,31 @@
 package Visual;
 
-
 import Controle.Controler_Taxi;
 import Objetos.Taxi;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template file, choose Tool s | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Guilherme
  */
 public class EditarTaxi extends javax.swing.JFrame {
 
-    /**
-     * Creates new form InserirTaxi
-     */
-    public EditarTaxi() {
+    Taxi taxi_pra_editar;
+
+    public EditarTaxi(Taxi taxi_editar) {
         initComponents();
+        this.taxi_pra_editar = taxi_editar;
+        jTextField1.setText(taxi_pra_editar.getResp_taxi());
+        jTextField2.setText("" + taxi_pra_editar.getCpf());
+        jTextField3.setText("" + taxi_pra_editar.getTelefone());
+        jTextField4.setText(taxi_pra_editar.getModelo());
+        jTextField5.setText(taxi_pra_editar.getCor());
+        jTextField6.setText(taxi_pra_editar.getPlaca());
+
     }
 
     /**
@@ -162,16 +167,22 @@ public class EditarTaxi extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        //Taxi newtaxi = new Taxi(jTextField1.getText(),Integer.parseInt(jTextField2.getText()),Integer.parseInt(jTextField3.getText()),jTextField4.getText(),jTextField5.getText(),jTextField6.getText());
-        //Controler_Taxi controlertaxi = new Controler_Taxi();
-        //controlertaxi.Cadastrar_taxi(newtaxi);
+        taxi_pra_editar.setResp_taxi(jTextField1.getText());
+        taxi_pra_editar.setCpf(Integer.parseInt(jTextField2.getText()));
+        taxi_pra_editar.setTelefone(Integer.parseInt(jTextField3.getText()));
+        taxi_pra_editar.setModelo(jTextField4.getText());
+        taxi_pra_editar.setCor(jTextField5.getText());
+        taxi_pra_editar.setPlaca(jTextField6.getText());
+        
+        
+        Controler_Taxi controlertaxi = new Controler_Taxi();
+        controlertaxi.Editar_taxi(taxi_pra_editar);
         this.dispose();
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jToggleButton2ActionPerformed
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

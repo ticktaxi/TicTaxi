@@ -2,6 +2,7 @@ package Visual;
 
 import Controle.Controler_Taxi;
 import Objetos.Taxi;
+import Objetos.Usuario;
 import java.awt.MenuComponent;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -63,6 +64,7 @@ public class VisualizarTaxi extends javax.swing.JFrame {
         jLabel3.setText("Cor");
 
         jButton2.setText("Editar");
+        jButton2.setEnabled(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -206,7 +208,32 @@ public class VisualizarTaxi extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        EditarTaxi user = new EditarTaxi();
+        //passagem de parametro pra edicao
+        String BuscarS;
+        BuscarS = (String) jList1.getSelectedValue() + ",";
+
+        String BusZ = "";
+        int cont;
+        Vector z = new Vector();
+
+        for (cont = 0; BuscarS.charAt(cont) != ',' && cont < BuscarS.length(); cont++) {
+            BusZ += BuscarS.charAt(cont);
+        }
+        z.add(BusZ);
+        for (int i = 0; i < 6; i++) {
+            BusZ = "";
+            for (cont++; BuscarS.charAt(cont) != ',' && cont < BuscarS.length(); cont++) {
+                if (BuscarS.charAt(cont) != ' ') {
+                    BusZ += BuscarS.charAt(cont);
+                }
+            }
+            z.add(BusZ);
+        }
+        Taxi taxi_para_edicao = new Taxi(Integer.parseInt((String)z.get(0)),(String)z.get(1),Integer.parseInt((String)z.get(2)),Integer.parseInt((String)z.get(3)),(String)z.get(4),(String)z.get(5),(String)z.get(6));
+        
+        //fim de passagem        
+        
+        EditarTaxi user = new EditarTaxi(taxi_para_edicao);
         user.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -236,7 +263,13 @@ public class VisualizarTaxi extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
-        jButton3.setEnabled(true);
+        if (jList1.getSelectedIndex() >= 0) {
+            jButton3.setEnabled(true);
+            jButton2.setEnabled(true);
+        } else {
+            jButton3.setEnabled(false);
+            jButton2.setEnabled(false);
+        }
     }//GEN-LAST:event_jList1ValueChanged
 
 

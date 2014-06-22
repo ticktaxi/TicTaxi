@@ -178,7 +178,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="        Controler_Taxi taxis = new Controler_Taxi();&#xa;        ArrayList&lt; Taxi &gt; arraydetaxi = new ArrayList&lt; Taxi &gt;();&#xa;        arraydetaxi = taxis.Visualizar_taxi(&quot;,,,,&quot;);&#xa;        Vector t = new Vector();&#xa;        String tax;&#xa;&#xa;        for(int cont = 0;cont&lt;arraydetaxi.size();cont++){&#xa;            tax = &quot;&quot;+arraydetaxi.get(cont).getCod()+&quot;, Nome: &quot;+arraydetaxi.get(cont).getResp_taxi()+&quot;, Telefone: &quot;+arraydetaxi.get(cont).getTelefone()+&quot;, Modelo: &quot;+arraydetaxi.get(cont).getModelo()+&quot;, Cor: &quot;+arraydetaxi.get(cont).getCor()+&quot;, Placa: &quot;+arraydetaxi.get(cont).getPlaca();&#xa;            jComboBox1.insertItemAt(tax,cont);&#xa;        }"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="        Controler_Taxi taxis = new Controler_Taxi();&#xa;        arraydetaxi = taxis.Visualizar_taxi(&quot;,,,,&quot;);&#xa;        Vector t = new Vector();&#xa;        String tax;&#xa;&#xa;        for(int cont = 0;cont&lt;arraydetaxi.size();cont++){&#xa;            tax = &quot;&quot;+arraydetaxi.get(cont).getCod()+&quot;, Nome: &quot;+arraydetaxi.get(cont).getResp_taxi()+&quot;, Telefone: &quot;+arraydetaxi.get(cont).getTelefone()+&quot;, Modelo: &quot;+arraydetaxi.get(cont).getModelo()+&quot;, Cor: &quot;+arraydetaxi.get(cont).getCor()+&quot;, Placa: &quot;+arraydetaxi.get(cont).getPlaca();&#xa;            jComboBox1.insertItemAt(tax,cont);&#xa;        }"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JComboBox" name="jComboBox2">
@@ -188,7 +188,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Controler_Cliente client = new Controler_Cliente();&#xa;        ArrayList&lt; Cliente &gt; arraydecliente = new ArrayList&lt; Cliente &gt;();&#xa;        &#xa;        arraydecliente = client.Visualizar_Cliente(&quot;,,&quot;);&#xa;&#xa;        String temp;&#xa;        &#xa;        for(int cont = 0;cont&lt;arraydecliente.size();cont++){&#xa;            temp = &quot;&quot;+arraydecliente.get(cont).getCod()+&quot;, Nome: &quot;+arraydecliente.get(cont).getNome()+&quot;, Telefone: &quot;+arraydecliente.get(cont).getTelefone();&#xa;            jComboBox2.insertItemAt(temp,cont);&#xa;        }"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Controler_Cliente client = new Controler_Cliente();&#xa;        &#xa;        arraydecliente = client.Visualizar_Cliente(&quot;,,&quot;);&#xa;&#xa;        String temp;&#xa;        &#xa;        for(int cont = 0;cont&lt;arraydecliente.size();cont++){&#xa;            temp = &quot;&quot;+arraydecliente.get(cont).getCod()+&quot;, Nome: &quot;+arraydecliente.get(cont).getNome()+&quot;, Telefone: &quot;+arraydecliente.get(cont).getTelefone();&#xa;            jComboBox2.insertItemAt(temp,cont);&#xa;        }"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField2">

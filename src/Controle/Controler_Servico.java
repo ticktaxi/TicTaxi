@@ -124,12 +124,12 @@ public class Controler_Servico {
     }
 
  
-    public void Editar_servico(int cod, String nome_resp, int codtaxi, Date data, Time hora, int codcliente, String edereco_inicio, String edereco_fim, String status) {
-        String str = "UPDATE * FROM Servico WHERE cod ="+cod+" SET codT="+codtaxi+",data="+data+",hora="+hora+",codC="+codcliente+",edereco_inicio="+edereco_inicio+",edereco_fim="+edereco_fim+",status="+status+";";
+    public void Editar_servico(Servico edit_serv) {
+        String str = "UPDATE Servico SET codT = "+edit_serv.getCodtaxi()+", data = '"+edit_serv.getData()+"', hora = '"+edit_serv.getHora()+"', codC = "+edit_serv.getCodcliente()+", endereco_inicio = '"+edit_serv.getEdereco_inicio()+"',endereco_fim = '"+edit_serv.getEdereco_fim()+"',status = '"+edit_serv.getStatus()+"' WHERE cod = "+edit_serv.getCod()+";";
         try {
             conexao = Conexao.getConexao();
             psmt = (PreparedStatement) conexao.prepareStatement(str);
-
+            psmt.executeUpdate(str);
         } catch (SQLException excep) {
             excep.printStackTrace();
         }

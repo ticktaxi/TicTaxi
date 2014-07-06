@@ -4,7 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import javax.swing.JOptionPane;
 
-
+//http://www.embarcados.com.br/comunicacao-serial-java-arduino/
+//http://tehii.wordpress.com/2011/09/23/api-rxtx-comunicacao-serial-com-java/
 public class Conexao {
     
     public static Connection getConexao(){

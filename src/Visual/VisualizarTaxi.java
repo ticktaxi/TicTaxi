@@ -2,6 +2,7 @@ package Visual;
 
 import Controle.Controler_Taxi;
 import Objetos.Taxi;
+import Objetos.Usuario;
 import java.awt.MenuComponent;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -10,7 +11,9 @@ import javax.swing.ListModel;
 import javax.swing.event.ListSelectionListener;
 
 public class VisualizarTaxi extends javax.swing.JFrame {
-Controler_Taxi taxis = new Controler_Taxi();
+
+    Controler_Taxi taxis = new Controler_Taxi();
+
     /**
      * Creates new form VisualizarTaxi
      */
@@ -28,20 +31,19 @@ Controler_Taxi taxis = new Controler_Taxi();
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFieldNome = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jTextField4 = new javax.swing.JTextField();
+        jTextFieldModelo = new javax.swing.JTextField();
+        jButtonBuscar = new javax.swing.JButton();
+        jTextFieldPlaca = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jTextFieldCor = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jButtonEditar = new javax.swing.JButton();
+        jButtonExcluir = new javax.swing.JButton();
+        jButtonFechar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
-        jLabel5 = new javax.swing.JLabel();
+        jListTaxis = new javax.swing.JList();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,10 +51,10 @@ Controler_Taxi taxis = new Controler_Taxi();
 
         jLabel2.setText("Modelo");
 
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonBuscar.setText("Buscar");
+        jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonBuscarActionPerformed(evt);
             }
         });
 
@@ -60,30 +62,49 @@ Controler_Taxi taxis = new Controler_Taxi();
 
         jLabel3.setText("Cor");
 
-        jButton2.setText("Editar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEditar.setText("Editar");
+        jButtonEditar.setEnabled(false);
+        jButtonEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonEditarActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Excluir");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonExcluir.setText("Excluir");
+        jButtonExcluir.setEnabled(false);
+        jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonExcluirActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Fechar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButtonFechar.setText("Fechar");
+        jButtonFechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButtonFecharActionPerformed(evt);
             }
         });
 
-        jScrollPane2.setViewportView(jList1);
+        ArrayList< Taxi> arraydetaxi = new ArrayList< Taxi>();
+        String BuscarS;
 
-        jLabel5.setText("Modelo");
+        arraydetaxi = taxis.Visualizar_taxi(",,,,");
+        Vector t = new Vector();
+        String tax;
+
+        for (int cont = 0; cont < arraydetaxi.size(); cont++) {
+            tax = "" + arraydetaxi.get(cont).getCod() + ", " + arraydetaxi.get(cont).getResp_taxi() + ", " + arraydetaxi.get(cont).getCpf() + ", " + arraydetaxi.get(cont).getTelefone() + ", " + arraydetaxi.get(cont).getModelo() + ", " + arraydetaxi.get(cont).getCor() + ", " + arraydetaxi.get(cont).getPlaca();
+            t.add(tax);
+        }
+
+        jListTaxis.setListData(t);
+        jButtonExcluir.setEnabled(false);
+        jListTaxis.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jListTaxisValueChanged(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jListTaxis);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -96,30 +117,28 @@ Controler_Taxi taxis = new Controler_Taxi();
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(22, 22, 22)
-                        .addComponent(jTextField1)
+                        .addComponent(jTextFieldNome)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextFieldModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(131, 131, 131)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)
+                        .addGap(131, 378, Short.MAX_VALUE)
+                        .addComponent(jButtonEditar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3)
+                        .addComponent(jButtonExcluir)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton4))
+                        .addComponent(jButtonFechar))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(22, 22, 22)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldCor, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)))
+                        .addComponent(jButtonBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -128,105 +147,135 @@ Controler_Taxi taxis = new Controler_Taxi();
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(jTextFieldPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
-                            .addComponent(jButton3)
-                            .addComponent(jButton4))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel5)
-                        .addContainerGap())))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonEditar)
+                    .addComponent(jButtonExcluir)
+                    .addComponent(jButtonFechar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ArrayList< Taxi > arraydetaxi = new ArrayList< Taxi >();
-        
-        arraydetaxi = taxis.Visualizar_taxi(null,0);
+    private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
+        ArrayList< Taxi> arraydetaxi = new ArrayList< Taxi>();
+        String BuscarS;
+
+        BuscarS = jTextFieldNome.getText() + ",";
+        BuscarS += jTextFieldCor.getText() + ",";
+        BuscarS += jTextFieldModelo.getText() + ",";
+        BuscarS += jTextFieldPlaca.getText() + ",";
+
+        arraydetaxi = taxis.Visualizar_taxi(BuscarS);
         Vector t = new Vector();
         String tax;
-        
-        for(int cont = 0;cont<arraydetaxi.size();cont++){
-            tax = ""+arraydetaxi.get(cont).getCod()+", "+arraydetaxi.get(cont).getResp_taxi()+", "+arraydetaxi.get(cont).getCpf()+", "+arraydetaxi.get(cont).getTelefone()+", "+arraydetaxi.get(cont).getModelo()+", "+arraydetaxi.get(cont).getCor()+", "+arraydetaxi.get(cont).getPlaca();
+
+        for (int cont = 0; cont < arraydetaxi.size(); cont++) {
+            tax = "" + arraydetaxi.get(cont).getCod() + ", " + arraydetaxi.get(cont).getResp_taxi() + ", " + arraydetaxi.get(cont).getCpf() + ", " + arraydetaxi.get(cont).getTelefone() + ", " + arraydetaxi.get(cont).getModelo() + ", " + arraydetaxi.get(cont).getCor() + ", " + arraydetaxi.get(cont).getPlaca();
             t.add(tax);
         }
-        
-        
-        jList1.setListData(t);
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+        jListTaxis.setListData(t);
+        jButtonExcluir.setEnabled(false);
+    }//GEN-LAST:event_jButtonBuscarActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jButtonFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFecharActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jButtonFecharActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        EditarTaxi user = new EditarTaxi();
+    private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
+        //passagem de parametro pra edicao
+        String BuscarS;
+        BuscarS = (String) jListTaxis.getSelectedValue() + ",";
+
+        String BusZ = "";
+        int cont;
+        Vector z = new Vector();
+
+        for (cont = 0; BuscarS.charAt(cont) != ',' && cont < BuscarS.length(); cont++) {
+            BusZ += BuscarS.charAt(cont);
+        }
+        z.add(BusZ);
+        for (int i = 0; i < 6; i++) {
+            BusZ = "";
+            for (cont++; BuscarS.charAt(cont) != ',' && cont < BuscarS.length(); cont++) {
+                if (BuscarS.charAt(cont) != ' ') {
+                    BusZ += BuscarS.charAt(cont);
+                }
+            }
+            z.add(BusZ);
+        }
+        Taxi taxi_para_edicao = new Taxi(Long.parseLong((String)z.get(0)),(String)z.get(1),Long.parseLong((String)z.get(2)),Long.parseLong((String)z.get(3)),(String)z.get(4),(String)z.get(5),(String)z.get(6));
+        
+        //fim de passagem        
+        
+        EditarTaxi user = new EditarTaxi(taxi_para_edicao);
         user.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonEditarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        String a = (String) jList1.getSelectedValue();
-        String deletar="";
-        for(int cont=0;a.charAt(cont)!=',';cont++){
-            deletar+=a.charAt(cont);
+    private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
+        String a = (String) jListTaxis.getSelectedValue();
+        String deletar = "";
+        for (int cont = 0; a.charAt(cont) != ','; cont++) {
+            deletar += a.charAt(cont);
         }
-        taxis.Excluir_taxi(Integer.parseInt(deletar));
-        
-       // jLabel5.setText( ""+(jList1.getSelectedIndex()));
-        ArrayList< Taxi > arraydetaxi = new ArrayList< Taxi >();
-        
-        arraydetaxi = taxis.Visualizar_taxi(null,0);
+        taxis.Excluir_taxi(Long.parseLong(deletar));
+
+        ArrayList< Taxi> arraydetaxi = new ArrayList< Taxi>();
+
+        arraydetaxi = taxis.Visualizar_taxi(",,,,");
         Vector t = new Vector();
         String tax;
-        
-        for(int cont = 0;cont<arraydetaxi.size();cont++){
-            tax = ""+arraydetaxi.get(cont).getCod()+", "+arraydetaxi.get(cont).getResp_taxi()+", "+arraydetaxi.get(cont).getCpf()+", "+arraydetaxi.get(cont).getTelefone()+", "+arraydetaxi.get(cont).getModelo()+", "+arraydetaxi.get(cont).getCor()+", "+arraydetaxi.get(cont).getPlaca();
+
+        for (int cont = 0; cont < arraydetaxi.size(); cont++) {
+            tax = "" + arraydetaxi.get(cont).getCod() + ", " + arraydetaxi.get(cont).getResp_taxi() + ", " + arraydetaxi.get(cont).getCpf() + ", " + arraydetaxi.get(cont).getTelefone() + ", " + arraydetaxi.get(cont).getModelo() + ", " + arraydetaxi.get(cont).getCor() + ", " + arraydetaxi.get(cont).getPlaca();
             t.add(tax);
         }
-        
-        
-        jList1.setListData(t);
-        
-        
-        
-    }//GEN-LAST:event_jButton3ActionPerformed
+
+        jListTaxis.setListData(t);
+        jButtonExcluir.setEnabled(false);
+
+    }//GEN-LAST:event_jButtonExcluirActionPerformed
+
+    private void jListTaxisValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListTaxisValueChanged
+        if (jListTaxis.getSelectedIndex() >= 0) {
+            jButtonExcluir.setEnabled(true);
+            jButtonEditar.setEnabled(true);
+        } else {
+            jButtonExcluir.setEnabled(false);
+            jButtonEditar.setEnabled(false);
+        }
+    }//GEN-LAST:event_jListTaxisValueChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButtonBuscar;
+    private javax.swing.JButton jButtonEditar;
+    private javax.swing.JButton jButtonExcluir;
+    private javax.swing.JButton jButtonFechar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JList jList1;
+    private javax.swing.JList jListTaxis;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextFieldCor;
+    private javax.swing.JTextField jTextFieldModelo;
+    private javax.swing.JTextField jTextFieldNome;
+    private javax.swing.JTextField jTextFieldPlaca;
     // End of variables declaration//GEN-END:variables
 }

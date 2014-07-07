@@ -29,11 +29,25 @@ public class Controler_Usuario {
         }
     }
 
-    
-    public boolean LogaUser(String login, String Senha){
-        
-        return(true);
+    public boolean LogaUser(String login, String senha){
+        Usuario user;
+        String str = "SELECT * FROM Usuario WHERE  login = '"+login+"'AND senha = '"+senha+"';";
+        try {
+            conexao = Conexao.getConexao();
+            psmt = (PreparedStatement) conexao.prepareStatement(str);
+            ResultSet rs = psmt.executeQuery(str);
+            user = new Usuario(rs.getString("login"), rs.getString("senha"), rs.getString("cargo"));
+            if(user.getLogin()==login && user.getSenha()==senha){
+               return(true); 
+            }else{
+               return(false); 
+            }
+        } catch (SQLException excep) {
+            excep.printStackTrace();
+            return false;
+        }
     }
+    
     public ArrayList< Usuario >  Visualizar_usuario(String pBusca) {
         String str, temp = "",BusZ = "";
         int cont;

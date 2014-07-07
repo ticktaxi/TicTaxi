@@ -13,7 +13,7 @@ package Objetos;
 public class Taxi {
     private long Cod;
     private String resp_taxi;
-    private long cpf;
+    private String cpf;
     private long telefone;
     private String modelo;
     private String cor;
@@ -23,7 +23,7 @@ public class Taxi {
         return Cod;
     }
 
-    public Taxi(long Cod,String resp_taxi, long cpf, long telefone, String modelo, String cor, String placa) {
+    public Taxi(long Cod,String resp_taxi, String cpf, long telefone, String modelo, String cor, String placa) {
         this.Cod=Cod;
         this.resp_taxi = resp_taxi;
         this.cpf = cpf;
@@ -43,11 +43,11 @@ public class Taxi {
         this.resp_taxi = resp_taxi;
     }
 
-    public long getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(long cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 

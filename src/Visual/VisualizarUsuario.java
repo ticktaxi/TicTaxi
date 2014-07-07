@@ -83,7 +83,7 @@ public class VisualizarUsuario extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jListUsuarios);
 
-        jComboBoxCargo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Taxista", "Secretaria", "Gerente" }));
+        jComboBoxCargo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Taxista", "Secretaria", "Gerente", "Cliente" }));
         jComboBoxCargo.setToolTipText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

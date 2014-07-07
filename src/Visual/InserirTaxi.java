@@ -176,7 +176,7 @@ public class InserirTaxi extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jToggleButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonCadastrarActionPerformed
-        Taxi newtaxi = new Taxi(0,jTextFieldNome.getText(),Long.parseLong(jTextFieldCpf.getText()),Long.parseLong(jTextFieldTelefone.getText()),jTextFieldModelo.getText(),jTextFieldCor.getText(),jTextFieldPlaca.getText());
+        Taxi newtaxi = new Taxi(0,jTextFieldNome.getText(),(jTextFieldCpf.getText()),Long.parseLong(jTextFieldTelefone.getText()),jTextFieldModelo.getText(),jTextFieldCor.getText(),jTextFieldPlaca.getText());
         Controler_Taxi controlertaxi = new Controler_Taxi();
         controlertaxi.Cadastrar_taxi(newtaxi);
         this.dispose();

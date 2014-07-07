@@ -54,7 +54,7 @@ public class EditarUsuario extends javax.swing.JFrame{
 
         jLabel5.setText("Cargo");
 
-        jComboBoxCargo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Taxista", "Secretaria", "Gerente" }));
+        jComboBoxCargo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Taxista", "Secretaria", "Gerente", "Cliente" }));
         jComboBoxCargo.setToolTipText("");
 
         jButtonEditar.setText("Editar");

@@ -29,6 +29,11 @@ public class Controler_Usuario {
         }
     }
 
+    
+    public boolean LogaUser(String login, String Senha){
+        
+        return(true);
+    }
     public ArrayList< Usuario >  Visualizar_usuario(String pBusca) {
         String str, temp = "",BusZ = "";
         int cont;

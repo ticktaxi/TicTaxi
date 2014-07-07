@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-public class Bluetooth implements Runnable, SerialPortEventListener {
+public class Controler_Bluetooth implements Runnable, SerialPortEventListener {
  
     public String Dadoslidos;
     public int nodeBytes;
@@ -46,7 +46,7 @@ public class Bluetooth implements Runnable, SerialPortEventListener {
         return Leitura;
     }
  
-    public Bluetooth(String p, int b, int t) {
+    public Controler_Bluetooth(String p, int b, int t) {
         this.Porta = p;
         this.baudrate = b;
         this.timeout = t;
@@ -66,6 +66,7 @@ public class Bluetooth implements Runnable, SerialPortEventListener {
     public void ObterIdDaPorta() {
         try {
             cp = CommPortIdentifier.getPortIdentifier(Porta);
+            
             if (cp == null) {
                 System.out.println("Erro na porta");
                 IDPortaOK = false;
@@ -180,6 +181,7 @@ public class Bluetooth implements Runnable, SerialPortEventListener {
                         } else {
                             bufferLeitura.append((char) novoDado);
                         }
+                       
                     } catch (IOException ioe) {
                         System.out.println("Erro de leitura serial: " + ioe);
                     }
@@ -192,8 +194,16 @@ public class Bluetooth implements Runnable, SerialPortEventListener {
     //Método para conferir se recebeu dados
     public void recebeuDado(){
         String dado = getDado();
-        if(dado != null){
-            System.out.print(getDado()+"\n");
+        
+        if(dado != null && dado.length()>7){
+             if(dado.charAt(0)=='|' && dado.charAt(dado.length()-3)=='@'){
+                 if(((String)dado.subSequence(dado.indexOf("|")+1, dado.indexOf("$"))).contains("Login")){
+                     System.out.println("logado ");
+                     
+                     
+                     
+                 }
+            }
         }
     }
  

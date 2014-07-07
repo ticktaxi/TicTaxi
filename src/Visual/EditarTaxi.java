@@ -22,7 +22,7 @@ public class EditarTaxi extends javax.swing.JFrame {
         initComponents();
         this.taxi_pra_editar = taxi_editar;
         jTextFieldNome.setText(taxi_pra_editar.getResp_taxi());
-        jTextFieldCPF.setText("" + taxi_pra_editar.getCpf());
+        jTextFieldCPF.setText(taxi_pra_editar.getCpf());
         jTextFieldTelefone.setText("" + taxi_pra_editar.getTelefone());
         jTextFieldModelo.setText(taxi_pra_editar.getModelo());
         jTextFieldCor.setText(taxi_pra_editar.getCor());
@@ -178,7 +178,7 @@ public class EditarTaxi extends javax.swing.JFrame {
 
     private void jToggleButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonEditarActionPerformed
         taxi_pra_editar.setResp_taxi(jTextFieldNome.getText());
-        taxi_pra_editar.setCpf(Long.parseLong(jTextFieldCPF.getText()));
+        taxi_pra_editar.setCpf(jTextFieldCPF.getText());
         taxi_pra_editar.setTelefone(Long.parseLong(jTextFieldTelefone.getText()));
         taxi_pra_editar.setModelo(jTextFieldModelo.getText());
         taxi_pra_editar.setCor(jTextFieldCor.getText());

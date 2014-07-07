@@ -180,7 +180,7 @@ public class InserirCliente extends javax.swing.JFrame {
         java.sql.Date datas = null;
         datas = new java.sql.Date(dataN.getTime());
 
-        Cliente client = new Cliente(0, jTextFieldNome.getText(), Long.parseLong(jTextFieldTelefone.getText()), Long.parseLong(jTextFieldCPF.getText()), datas, jTextFieldEmail.getText());
+        Cliente client = new Cliente(0, jTextFieldNome.getText(), Long.parseLong(jTextFieldTelefone.getText()), jTextFieldCPF.getText(), datas, jTextFieldEmail.getText());
         con_cliente.Cadastrar_Cliente(client);
         this.dispose();
 

@@ -185,7 +185,7 @@ public class EditarCliente extends javax.swing.JFrame {
     private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
         cliente_editar.setNome(jTextFieldNome.getText());
         cliente_editar.setTelefone(Long.parseLong(jTextFieldTelefone.getText()));
-        cliente_editar.setCpf(Long.parseLong(jTextFieldCPF.getText()));
+        cliente_editar.setCpf(jTextFieldCPF.getText());
         cliente_editar.setEmail(jTextFieldEmail.getText());
         
         SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy");

@@ -110,10 +110,11 @@
     <Component class="javax.swing.JComboBox" name="jComboBoxCargo">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
+          <StringArray count="4">
             <StringItem index="0" value="Taxista"/>
             <StringItem index="1" value="Secretaria"/>
             <StringItem index="2" value="Gerente"/>
+            <StringItem index="3" value="Cliente"/>
           </StringArray>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value=""/>

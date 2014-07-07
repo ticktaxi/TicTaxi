@@ -229,7 +229,7 @@ public class VisualizarCliente extends javax.swing.JFrame {
             java.sql.Date datas = null;
             datas = new java.sql.Date(dataN.getTime());
             
-            Cliente Cliente_p_editar = new Cliente(Long.parseLong((String) z.get(0)), (String) z.get(1), Long.parseLong((String) z.get(2)), Long.parseLong((String) z.get(3)), datas, (String) z.get(5));
+            Cliente Cliente_p_editar = new Cliente(Long.parseLong((String) z.get(0)), (String) z.get(1), Long.parseLong((String) z.get(2)),  (String)z.get(3), datas, (String) z.get(5));
             
             user = new EditarCliente(Cliente_p_editar);
             

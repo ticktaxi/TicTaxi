@@ -17,7 +17,7 @@ public class Controler_Taxi {
     private Statement psmt;
 
     public int Cadastrar_taxi(Taxi user) {
-        String str = "INSERT INTO Taxi(cod, nome_responsavel, cpf, telefone, modelo, cor, placa) VALUES (0,'" + user.getResp_taxi()+ "', " + user.getCpf()+ ", " + user.getTelefone()+ ", '" + user.getModelo()+ "', '" + user.getCor()+ "', '" + user.getPlaca()+ "');";
+        String str = "INSERT INTO Taxi(cod, nome_responsavel, cpf, telefone, modelo, cor, placa) VALUES (0,'" + user.getResp_taxi()+ "', '" + user.getCpf()+ "', " + user.getTelefone()+ ", '" + user.getModelo()+ "', '" + user.getCor()+ "', '" + user.getPlaca()+ "');";
         try {
             conexao = Conexao.getConexao();
             psmt = (PreparedStatement) conexao.prepareStatement(str);
@@ -101,7 +101,7 @@ public class Controler_Taxi {
             psmt = (PreparedStatement) conexao.prepareStatement(str);
             ResultSet rs = psmt.executeQuery(str);
             while (rs.next()) {
-                vet.add(new Taxi(rs.getLong("cod"),rs.getString("nome_responsavel"), rs.getLong("cpf"), rs.getLong("telefone"), rs.getString("modelo"), rs.getString("cor"), rs.getString("placa")));
+                vet.add(new Taxi(rs.getLong("cod"),rs.getString("nome_responsavel"), rs.getString("cpf"), rs.getLong("telefone"), rs.getString("modelo"), rs.getString("cor"), rs.getString("placa")));
             }
             return vet;
 
@@ -127,7 +127,7 @@ public class Controler_Taxi {
     
     public void Editar_taxi(Taxi taxi_editar) {
         
-        String str = "UPDATE Taxi SET nome_responsavel = '"+taxi_editar.getResp_taxi()+"',cpf="+taxi_editar.getCpf()+",telefone="+taxi_editar.getTelefone()+",modelo='"+taxi_editar.getModelo()+"',cor='"+taxi_editar.getCor()+"',placa='"+taxi_editar.getPlaca()+"' WHERE cod ="+taxi_editar.getCod() +";";
+        String str = "UPDATE Taxi SET nome_responsavel = '"+taxi_editar.getResp_taxi()+"',cpf='"+taxi_editar.getCpf()+"',telefone="+taxi_editar.getTelefone()+",modelo='"+taxi_editar.getModelo()+"',cor='"+taxi_editar.getCor()+"',placa='"+taxi_editar.getPlaca()+"' WHERE cod ="+taxi_editar.getCod() +";";
         
         try {
             conexao = Conexao.getConexao();

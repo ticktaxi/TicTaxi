@@ -92,7 +92,7 @@ public class Controler_Cliente {
             psmt = (PreparedStatement) conexao.prepareStatement(str);
             ResultSet rs = psmt.executeQuery(str);
             while (rs.next()) {
-                vet.add(new Cliente(rs.getLong("cod"), rs.getString("nome"), rs.getLong("telefone"), rs.getLong("cpf"), rs.getDate("data_nascimento"), rs.getString("email")));
+                vet.add(new Cliente(rs.getLong("cod"), rs.getString("nome"), rs.getLong("telefone"), rs.getString("cpf"), rs.getDate("data_nascimento"), rs.getString("email")));
             }
             return vet;
 

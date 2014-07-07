@@ -16,11 +16,11 @@ public class Cliente {
     private long cod;
     private String Nome;
     private long telefone;
-    private long cpf;
+    private String cpf;
     private Date data_nascimento;
     private String email;    
 
-    public Cliente(long cod, String Nome, long telefone, long cpf, Date data_nascimento, String email) {
+    public Cliente(long cod, String Nome, long telefone, String cpf, Date data_nascimento, String email) {
         this.cod = cod;
         this.Nome = Nome;
         this.telefone = telefone;
@@ -55,11 +55,11 @@ public class Cliente {
         this.telefone = telefone;
     }
 
-    public long getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(long cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 

@@ -18,7 +18,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     Controler_Bluetooth bt;   
     
     public JanelaPrincipal() {
-        this.bt = new Controler_Bluetooth("COM12",9600,1);
+        this.bt = new Controler_Bluetooth("COM12",115200,1);
         initComponents();
         bt.ObterIdDaPorta();
         bt.AbrirPorta();

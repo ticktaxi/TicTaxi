@@ -35,7 +35,7 @@ public class Controler_ClienteTest extends TestCase {
         }
         java.sql.Date datas = null;
         datas = new java.sql.Date(dataN.getTime());
-        Cliente user = new Cliente(0,"Guilherme43", 92229943, 406421462, datas , "guilherme@hotmail.com");
+        Cliente user = new Cliente(0,"Guilherme43", 92229943, "465465465", datas , "guilherme@hotmail.com");
         Controler_Cliente instance = new Controler_Cliente();
         int result = instance.Cadastrar_Cliente(user);
         assertEquals(1, result);

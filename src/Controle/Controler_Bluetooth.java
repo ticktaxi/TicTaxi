@@ -1,6 +1,8 @@
 package Controle;
 
+import Objetos.Cliente;
 import Objetos.Usuario;
+import Visual.InserirServico;
 import gnu.io.CommPortIdentifier;
 import gnu.io.SerialPort;
 import gnu.io.SerialPortEvent;
@@ -228,7 +230,37 @@ public class Controler_Bluetooth implements Runnable, SerialPortEventListener {
             return false;
         }
     }
-
+    
+    public String ChecaCliente(String cpf,String endereco) {
+        Cliente user = null;
+        String str = ("SELECT * FROM Cliente WHERE cpf = '" + cpf + "';");
+        System.out.println(str);
+        try {
+            conexao = Conexao.getConexao();
+            psmt = (PreparedStatement) conexao.prepareStatement(str);
+            ResultSet rs = psmt.executeQuery(str);
+            while (rs.next()) {
+                user = new Cliente(rs.getLong("cod"), rs.getString("nome"), rs.getLong("telefone"), rs.getString("cpf"), rs.getDate("data_nascimento"), rs.getString("email"));
+            }
+            if (user != null) {
+                if (user.getCpf().equals(cpf)) {
+                    InserirServico serv = new InserirServico(user,endereco); 
+                    serv.setVisible(true);
+                    System.out.println("encontrado");
+                    return "Taxi a caminho";
+                } else {
+                    return null;
+                }
+            }else{  
+                System.out.println("Nao encontrado");
+                return null;
+            }
+        } catch (SQLException excep) {
+            excep.printStackTrace();
+             return null;
+        }
+    }
+    
     //Método para os dados
     public void recebeuDado() {
         String dado = getDado();
@@ -254,11 +286,20 @@ public class Controler_Bluetooth implements Runnable, SerialPortEventListener {
                     }
                 }
                 if (dado.charAt(1) == 'D') {
-                    if (LogaUser(Porta, Porta)) {
+                    String endereco = dado.substring(3, dado.lastIndexOf("@"));
+                    String cpfcliente = dado.substring(dado.lastIndexOf("@") + 1, dado.lastIndexOf("&"));
+                    String teste = ChecaCliente(cpfcliente,endereco);
+                    if (teste!= null) {
                         HabilitarEscrita();
-                        EnviarUmaString("|Chamada aceita: Taxi placa XTZ3587, Cor Vermelho@");
+                        EnviarUmaString("Chamada aceita: "+teste);
                         System.out.println("|Chamada aceita@");
                         HabilitarLeitura();
+                    }else {
+                        HabilitarEscrita();
+                        EnviarUmaString("|CPF@");
+                        System.out.println("|CPF@");
+                        HabilitarLeitura();
+
                     }
                 }
             } else {

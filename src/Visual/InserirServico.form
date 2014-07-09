@@ -188,7 +188,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Controler_Cliente client = new Controler_Cliente();&#xa;        ArrayList&lt; Cliente &gt; arraydecliente = new ArrayList&lt; Cliente &gt;();&#xa;        &#xa;        arraydecliente = client.Visualizar_Cliente(&quot;,,&quot;);&#xa;&#xa;        String temp;&#xa;        &#xa;        for(int cont = 0;cont&lt;arraydecliente.size();cont++){&#xa;            temp = &quot;&quot;+arraydecliente.get(cont).getCod()+&quot;, Nome: &quot;+arraydecliente.get(cont).getNome()+&quot;, Telefone: &quot;+arraydecliente.get(cont).getTelefone();&#xa;            jComboBoxCliente.insertItemAt(temp,cont);&#xa;        }"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Controler_Cliente client = new Controler_Cliente();&#xa;        &#xa;        &#xa;        arraydecliente = client.Visualizar_Cliente(&quot;,,&quot;);&#xa;&#xa;        String temp;&#xa;        &#xa;        for(int cont = 0;cont&lt;arraydecliente.size();cont++){&#xa;            temp = &quot;&quot;+arraydecliente.get(cont).getCod()+&quot;, Nome: &quot;+arraydecliente.get(cont).getNome()+&quot;, Telefone: &quot;+arraydecliente.get(cont).getTelefone();&#xa;            jComboBoxCliente.insertItemAt(temp,cont);&#xa;        }"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="jTextFieldHora">

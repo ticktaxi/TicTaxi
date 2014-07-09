@@ -27,11 +27,20 @@ import javax.swing.text.MaskFormatter;
 public class InserirServico extends javax.swing.JFrame {
 
     Controler_Servico Serv = new Controler_Servico();
-
+    ArrayList< Cliente > arraydecliente = new ArrayList< Cliente >();
+    
     public InserirServico() {
         initComponents();
     }
+    
+    public InserirServico(Cliente user, String endereco) {
+        initComponents();
+        adicionachamada(user, endereco);
+        
+    }
 
+   
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -108,7 +117,6 @@ public class InserirServico extends javax.swing.JFrame {
         }
 
         Controler_Cliente client = new Controler_Cliente();
-        ArrayList< Cliente > arraydecliente = new ArrayList< Cliente >();
 
         arraydecliente = client.Visualizar_Cliente(",,");
 
@@ -242,6 +250,17 @@ public class InserirServico extends javax.swing.JFrame {
         this.dispose();  
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
+    
+     public void adicionachamada(Cliente client, String endereco){
+         for (int cont = 0; cont < arraydecliente.size(); cont++) {
+            if (client.getCod() == arraydecliente.get(cont).getCod()) {
+                jComboBoxCliente.setSelectedIndex(cont);
+                break;
+            }
+        }
+        jTextFieldEndInicio.setText(endereco);
+        jButtonCancelar.setEnabled(false);
+     }
     /**
      * @param args the command line arguments
      */
